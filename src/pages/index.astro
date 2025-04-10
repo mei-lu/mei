@@ -37,9 +37,8 @@ import "../styles/main.css"
                         <p>nice to meet you, i'm mei 🧸</p>
 
                         <p>
-                            i'm a creative developer who loves pink and cute
-                            things! <br />i make experiences for the web and
-                            beyond. ꒰ᐢ. .ᐢ꒱₊˚⊹
+                            i'm a creative developer who loves cute things! <br
+                            />i make experiences for the web. ꒰ᐢ. .ᐢ꒱₊˚⊹
                         </p>
 
                         <div class="cta">
@@ -95,7 +94,13 @@ import "../styles/main.css"
                 <p>© 2025 mei lu | github</p>
             </div>
         </footer>
+
+        <script type="module">
+            import { initHeartScene } from "/src/scripts/app.ts"
+
+            window.addEventListener("DOMContentLoaded", () => {
+                initHeartScene()
+            })
+        </script>
     </body>
 </html>
-
-<script src="../scripts/app.ts"></script>

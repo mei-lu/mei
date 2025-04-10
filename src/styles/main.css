@@ -58,6 +58,10 @@ h2 {
 }
 
 #home {
+    & hero-image {
+        aspect-ratio: 1/1;
+    }
+
     & .hero {
         display: flex;
         align-items: center;
