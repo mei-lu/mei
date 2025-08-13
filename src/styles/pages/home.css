@@ -1,0 +1,118 @@
+@import "../main.css";
+
+#home {
+    margin: var(--spacing-md) 0;
+
+    & #intro-container {
+        height: 90vh;
+    }
+
+    & .text-red {
+        color: var(--color-rose);
+    }
+
+    & hero-image {
+        aspect-ratio: 1/1;
+    }
+
+    & #portfolio {
+        & .portfolio-layout {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem; /* spacing between items */
+
+            @media (max-width: 768px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        & instax {
+            height: auto;
+        }
+    }
+
+    & #hero {
+    }
+
+    & #contact {
+        text-align: center;
+        margin-top: var(--spacing-md);
+
+        & .contact-list {
+            display: flex;
+            justify-content: center;
+            grid-gap: var(--spacing-sm);
+
+            & .nav-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-weight: 200;
+
+                & > a {
+                    margin-top: var(--spacing-sm);
+                    font-size: var(--font-sm);
+                }
+
+                & img {
+                    width: 24px;
+                }
+            }
+        }
+    }
+
+    & #portfolio {
+        text-align: center;
+    }
+
+    & #description {
+        display: flex;
+        flex-direction: column;
+        margin-top: var(--spacing-md);
+        font-size: var(--font-sm);
+        letter-spacing: 0.05em;
+        line-height: 1.2;
+        text-wrap: pretty;
+        text-align: center;
+        align-items: center;
+        gap: 40px;
+
+        & > img {
+            opacity: 1;
+            width: 50%;
+        }
+
+        @media (min-width: 768px) {
+            gap: 80px;
+            flex-direction: row;
+        }
+    }
+
+    & #hero-deco-text {
+        position: relative;
+
+        /* & svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+        } */
+
+        & text {
+            fill: var(--color-pink);
+        }
+
+        & #wavy-text {
+            font-family: var(--font-lex);
+            font-size: var(--font-lg);
+        }
+
+        @media (min-width: 768px) {
+            & #wavy-text {
+                font-family: var(--font-lex);
+                font-size: var(--font-lg);
+            }
+        }
+    }
+}
