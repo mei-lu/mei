@@ -1,5 +1,8 @@
 ---
-import "../styles/main.css"
+import "../styles/pages/home.css"
+import { projects } from "../data/projects.js"
+import Instax from "./components/instax.astro"
+import { ViewTransitions } from "astro:transitions"
 ---
 
 <html lang="en">
@@ -12,89 +15,134 @@ import "../styles/main.css"
             href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
             rel="stylesheet"
         />
-        <title>mei lu | developer</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+            rel="stylesheet"
+        />
+        <title>mei | software engineer</title>
+        <ViewTransitions />
     </head>
     <body>
-        <header>
-            <div class="lock" data-size="small">
+        <main id="home">
+            <header class="lock" data-size="small">
                 <a href="#main" class="skip-link sr-only">
                     Skip to main content
                 </a>
-                <div><h1>mei lu</h1></div>
-                <div class="nav-items">
-                    <a>about</a>
-                    <a>portfolio</a>
-                </div>
+            </header>
+
+            <div id="hero-deco-text" class="lock" data-size="small">
+                <svg width="100%" viewBox="0 0 400 105">
+                    <path
+                        id="curve-shape"
+                        fill="none"
+                        d="M1.88177 22.5C84.8816 104 208.379 114.5 310.379 75.5C412.379 36.5 464.881 1.4421 572.382 3.00005C679.882 4.558 759.379 53 796.379 95C833.379 137 865.267 189 847.379 279C829.49 369 780.882 400.5 764.382 505.5C747.882 610.5 830.882 796.5 830.882 796.5"
+                    ></path>
+
+                    <text x="0">
+                        <textPath
+                            id="wavy-text"
+                            href="#curve-shape"
+                            startOffset="5%">
+                            mei's snapshots
+                        </textPath>
+                    </text>
+                </svg>
             </div>
-        </header>
 
-        <main id="home">
-            <section>
-                <div class="hero lock">
-                    <div id="hero-image"></div>
+            <section id="hero">
+                <div id="description" class="lock" data-size="small">
+                    <p>
+                        i'm a creative developer who loves design, interaction,
+                        and cute things ₊˚⊹
+                        <br /><br />
+                        currently working as a full stack engineer while persuing
+                        a M.S. in artificial intelligence from the university of
+                        maryland
+                    </p>
+                    <img src="src/assets/camera.png" alt="instant camera" />
+                </div>
+            </section>
 
-                    <div id="description">
-                        <p>nice to meet you, i'm mei 🧸</p>
+            <section id="contact">
+                <h2>get in touch!</h2>
+                <div class="contact-list">
+                    <div class="nav-item">
+                        <a href="mailto:lumeidev@gmail.com">
+                            <img src="src/assets/email.svg" alt="Email icon" />
+                        </a>
+                    </div>
 
-                        <p>
-                            i'm a creative developer who loves pink and cute
-                            things! <br />i make experiences for the web and
-                            beyond. ꒰ᐢ. .ᐢ꒱₊˚⊹
-                        </p>
+                    <div class="nav-item">
+                        <a
+                            href="https://github.com/mei-lu"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <img
+                                src="src/assets/github.svg"
+                                alt="Github logo"
+                            />
+                        </a>
+                    </div>
 
-                        <div class="cta">
-                            <h2>get in touch</h2>
+                    <div class="nav-item">
+                        <a
+                            href="https://www.linkedin.com/in/meil"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <img
+                                src="src/assets/linkedin.svg"
+                                alt="LinkedIn logo"
+                            />
+                        </a>
+                    </div>
 
-                            <div class="contact-list">
-                                <div class="nav-item">
-                                    <img
-                                        src="src/pages/assets/github.svg"
-                                        alt="Github logo"
-                                    />
-                                    <a>github</a>
-                                </div>
-
-                                <div class="nav-item">
-                                    <img
-                                        src="src/pages/assets/linkedin.svg"
-                                        alt="Linkedin logo"
-                                    />
-                                    <a>linkedin</a>
-                                </div>
-
-                                <div class="nav-item">
-                                    <img
-                                        src="src/pages/assets/calendar.svg"
-                                        alt="Calendar icon"
-                                    />
-                                    <a>coffee chat</a>
-                                </div>
-
-                                <div class="nav-item">
-                                    <img
-                                        src="src/pages/assets/email.svg"
-                                        alt="Email icon"
-                                    />
-                                    <a>email</a>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="nav-item">
+                        <a
+                            href="src/assets/resume.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <img
+                                src="src/assets/resume.svg"
+                                alt="Resume icon"
+                            />
+                        </a>
                     </div>
                 </div>
             </section>
 
             <section id="portfolio">
                 <div class="lock">
-                    <h2>dev portfolio</h2>
+                    <p>projects in development...</p>
+                    <!-- <section id="portfolio">
+                    <div class="lock">
+                        <div class="portfolio-layout">
+                            {
+                                projects.map((project) => (
+                                    <Instax
+                                        src={project.src}
+                                        alt={project.alt}
+                                        eyebrow={project.eyebrow}
+                                        headline={project.headline}
+                                        detail={project.detail}
+                                        path={`/project/${project.slug}`}
+                                    />
+                                ))
+                            }
+                        </div>
+                    </div>
+                </section> -->
                 </div>
             </section>
-        </main>
+            <script type="module">
+                // import { initHeartScene } from "/src/scripts/app.ts"
 
-        <footer>
-            <div class="lock" data-size="small">
-                <p>© 2025 mei lu | github</p>
-            </div>
-        </footer>
+                import { initApp } from "/src/scripts/app.ts"
+
+                window.addEventListener("DOMContentLoaded", () => {
+                    initApp()
+                })
+            </script>
+        </main>
     </body>
 </html>
 

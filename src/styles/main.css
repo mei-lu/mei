@@ -2,8 +2,17 @@
 
 :root {
     --color-fairy-500: #f0c4cc;
-    --color-fairy-50: #fcf1f2;
-    --color-sunset: #ffc97e;
+    --color-fairy-50: #ffefed;
+    --color-rose: #b71c1c;
+    --color-rose: #b71c1c;
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-brown: #6d5050;
+    --color-pink: #ec889e;
+
+    --font-fancy: "amandine", sans-serif;
+    --font-text: "museo-sans-rounded", sans-serif;
+    --font-lex: "Lexend", sans-serif;
 
     --spacing-min: 4px;
     --spacing-xs: 8px;
@@ -15,18 +24,23 @@
 
     --font-min: 10px;
     --font-xs: 12px;
-    --font-sm: 16px;
+    --font-sm: 18px;
     --font-md: 24px;
     --font-lg: 32px;
     --font-xl: 48px;
+    --font-2xl: 72px;
 
-    --page-contain: 120ch;
-    --page-contain-small: 150ch;
+    --page-contain: 72rem;
+    --page-contain-small: 50rem;
+
+    --breakpoint-sm: 480px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
 }
 
 body {
     background-color: var(--color-fairy-50);
-    font-family: "Nunito", serif;
+    font-family: var(--font-text);
 }
 
 .sr-only {
@@ -42,78 +56,18 @@ body {
 .lock {
     max-width: var(--page-contain);
     margin: 0 auto;
+    padding: 0 var(--spacing-md);
 
     &[data-size="small"] {
         max-width: var(--page-contain-small);
     }
 }
 
-main {
-    margin: var(--spacing-xl) auto;
-}
-
-h1,
 h2 {
-    font-family: "the-seasons", sans-serif;
-}
-
-#home {
-    & .hero {
-        display: flex;
-        align-items: center;
-        grid-gap: var(--spacing-md);
-    }
-
-    & .cta {
-        text-align: center;
-        margin-top: var(--spacing-md);
-
-        & h2 {
-            font-size: var(--font-md);
-            font-weight: 800;
-        }
-
-        & .contact-list {
-            display: flex;
-            justify-content: center;
-            grid-gap: var(--spacing-sm);
-            margin-top: var(--font-md);
-
-            & .nav-item {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-
-                & > a {
-                    margin-top: var(--spacing-sm);
-                    font-size: var(--font-sm);
-                }
-
-                & > img {
-                    width: 32px;
-                }
-            }
-        }
-    }
-
-    & #description {
-        & > p:first-of-type {
-            font-size: var(--font-xl);
-            font-family: "the-seasons", sans-serif;
-            font-weight: 800;
-        }
-
-        & > p + p {
-            margin-top: var(--spacing-md);
-        }
-    }
-
-    & #portfolio {
-        & h2 {
-            font-size: var(--font-md);
-            font-weight: 800;
-        }
-    }
+    font-family: var(--font-lex);
+    font-size: var(--font-md);
+    color: var(--color-pink);
+    margin-bottom: var(--spacing-sm);
 }
 
 section {
@@ -121,19 +75,20 @@ section {
 }
 
 header {
-    background-color: var(--color-fairy-500);
-
     & > div {
         padding: var(--spacing-md);
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
+
+    & a + a {
+        margin-left: 4px;
+    }
 }
 
 footer {
     text-align: center;
-    background-color: var(--color-fairy-500);
 
     & > div {
         padding: var(--spacing-md);
