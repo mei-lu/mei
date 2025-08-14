@@ -94,27 +94,11 @@
     }
 
     & #hero-deco-text {
-        position: relative;
-
-        & svg {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-
-        & text {
-            fill: var(--color-pink);
-        }
-
-        & #wavy-text {
-            font-family: var(--font-lex);
+        & h1 {
+            text-align: center;
+            color: var(--color-pink);
             font-size: var(--font-xl);
-        }
-
-        @media (min-width: 768px) {
-            & #wavy-text {
-                font-size: var(--font-2xl);
-            }
+            font-family: var(--font-lex);
         }
     }
 }
