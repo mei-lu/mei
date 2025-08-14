@@ -1,7 +1,10 @@
 ---
 import "../styles/pages/home.css"
-import { projects } from "../data/projects.js"
-import Instax from "./components/instax.astro"
+import GithubIcon from "../assets/github.svg"
+import EmailIcon from "../assets/email.svg"
+import LinkedinIcon from "../assets/linkedin.svg"
+import ResumeIcon from "../assets/resume.svg"
+import CameraImg from "../assets/camera.png"
 import { ViewTransitions } from "astro:transitions"
 ---
 
@@ -59,7 +62,7 @@ import { ViewTransitions } from "astro:transitions"
                         a M.S. in artificial intelligence from the university of
                         maryland
                     </p>
-                    <img src="src/assets/camera.png" alt="instant camera" />
+                    <img src={CameraImg.src} alt="instant camera" />
                 </div>
             </section>
 
@@ -68,7 +71,7 @@ import { ViewTransitions } from "astro:transitions"
                 <div class="contact-list">
                     <div class="nav-item">
                         <a href="mailto:lumeidev@gmail.com">
-                            <img src="src/assets/email.svg" alt="Email icon" />
+                            <img src={EmailIcon.src} alt="Email icon" />
                         </a>
                     </div>
 
@@ -77,10 +80,7 @@ import { ViewTransitions } from "astro:transitions"
                             href="https://github.com/mei-lu"
                             target="_blank"
                             rel="noopener noreferrer">
-                            <img
-                                src="src/assets/github.svg"
-                                alt="Github logo"
-                            />
+                            <img src={GithubIcon.src} alt="Github logo" />
                         </a>
                     </div>
 
@@ -89,22 +89,16 @@ import { ViewTransitions } from "astro:transitions"
                             href="https://www.linkedin.com/in/meil"
                             target="_blank"
                             rel="noopener noreferrer">
-                            <img
-                                src="src/assets/linkedin.svg"
-                                alt="LinkedIn logo"
-                            />
+                            <img src={LinkedinIcon.src} alt="LinkedIn logo" />
                         </a>
                     </div>
 
                     <div class="nav-item">
                         <a
-                            href="src/assets/resume.pdf"
+                            href="/resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer">
-                            <img
-                                src="src/assets/resume.svg"
-                                alt="Resume icon"
-                            />
+                            <img src={ResumeIcon.src} alt="Resume icon" />
                         </a>
                     </div>
                 </div>
@@ -113,35 +107,8 @@ import { ViewTransitions } from "astro:transitions"
             <section id="portfolio">
                 <div class="lock">
                     <p>projects in development...</p>
-                    <!-- <section id="portfolio">
-                    <div class="lock">
-                        <div class="portfolio-layout">
-                            {
-                                projects.map((project) => (
-                                    <Instax
-                                        src={project.src}
-                                        alt={project.alt}
-                                        eyebrow={project.eyebrow}
-                                        headline={project.headline}
-                                        detail={project.detail}
-                                        path={`/project/${project.slug}`}
-                                    />
-                                ))
-                            }
-                        </div>
-                    </div>
-                </section> -->
                 </div>
             </section>
-            <script type="module">
-                // import { initHeartScene } from "/src/scripts/app.ts"
-
-                import { initApp } from "/src/scripts/app.ts"
-
-                window.addEventListener("DOMContentLoaded", () => {
-                    initApp()
-                })
-            </script>
         </main>
     </body>
 </html>

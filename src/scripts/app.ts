@@ -33,7 +33,5 @@ export const initApp = () => {
 
 // Load
 
-document.addEventListener("DOMContentLoaded", () => {
-    App()
-})
+document.addEventListener("DOMContentLoaded", () => {})
 export default {}
