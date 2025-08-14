@@ -58,7 +58,7 @@
                 }
 
                 & img {
-                    width: 24px;
+                    width: 28px;
                 }
             }
         }
@@ -81,6 +81,7 @@
         gap: 40px;
 
         & > img {
+            display: block;
             opacity: 1;
             width: 40%;
             height: auto;
