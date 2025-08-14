@@ -5,7 +5,7 @@
     flex-direction: column;
     justify-content: center;
     padding: var(--spacing-md) 0;
-    height: 100vh;
+    min-height: 100vh;
 
     & #intro-container {
         height: 90vh;
@@ -69,8 +69,8 @@
     }
 
     & #description {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr;
         margin-top: var(--spacing-md);
         font-size: var(--font-sm);
         letter-spacing: 0.05em;
@@ -79,18 +79,24 @@
         text-align: center;
         align-items: center;
         gap: 40px;
+        justify-items: center;
 
         & > img {
             display: block;
-            opacity: 1;
-            width: 40%;
             height: auto;
-            display: block;
+            min-width: 0;
+            max-width: 100%;
+            width: 50%;
         }
 
         @media (min-width: 768px) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 80px;
-            flex-direction: row;
+
+            & > img {
+                width: 100%;
+            }
         }
     }
 
