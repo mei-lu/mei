@@ -4,98 +4,61 @@ import GithubIcon from "../assets/github.svg"
 import EmailIcon from "../assets/email.svg"
 import LinkedinIcon from "../assets/linkedin.svg"
 import ResumeIcon from "../assets/resume.svg"
-import CameraImg from "../assets/camera.png"
-import { ViewTransitions } from "astro:transitions"
+import Layout from "./layouts/_layout.astro"
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-        <link rel="stylesheet" href="https://use.typekit.net/wzu6jqe.css" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-            rel="stylesheet"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
-            rel="stylesheet"
-        />
-        <title>mei | software engineer</title>
-        <ViewTransitions />
-    </head>
-    <body>
-        <main id="home">
-            <header class="lock" data-size="small">
-                <a href="#main" class="skip-link sr-only">
-                    Skip to main content
-                </a>
-            </header>
+<Layout title="mei" js="/scripts/app.ts" />
+<main id="home">
+    <section id="hero">
+        <div id="description" class="lock" data-size="small">
+            <p>
+                i'm a creative developer who loves design, interaction, and cute
+                things ₊˚⊹
+                <br /><br />
+                currently working as a full stack engineer while persuing a M.S.
+                in artificial intelligence from the university of maryland
+            </p>
+        </div>
+    </section>
 
-            <div id="hero-deco-text" class="lock" data-size="small">
-                <h1>mei's snapshots</h1>
+    <section id="portfolio">
+        <div class="lock">
+            <h2>featured projects</h2>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>get in touch!</h2>
+        <div class="contact-list">
+            <div class="nav-item">
+                <a href="mailto:lumeidev@gmail.com">
+                    <img src={EmailIcon.src} alt="Email icon" />
+                </a>
             </div>
 
-            <section id="hero">
-                <div id="description" class="lock" data-size="small">
-                    <p>
-                        i'm a creative developer who loves design, interaction,
-                        and cute things ₊˚⊹
-                        <br /><br />
-                        currently working as a full stack engineer while persuing
-                        a M.S. in artificial intelligence from the university of
-                        maryland
-                    </p>
-                    <img src={CameraImg.src} alt="instant camera" />
-                </div>
-            </section>
+            <div class="nav-item">
+                <a
+                    href="https://github.com/mei-lu"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <img src={GithubIcon.src} alt="Github logo" />
+                </a>
+            </div>
 
-            <section id="contact">
-                <h2>get in touch!</h2>
-                <div class="contact-list">
-                    <div class="nav-item">
-                        <a href="mailto:lumeidev@gmail.com">
-                            <img src={EmailIcon.src} alt="Email icon" />
-                        </a>
-                    </div>
+            <div class="nav-item">
+                <a
+                    href="https://www.linkedin.com/in/meil"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <img src={LinkedinIcon.src} alt="LinkedIn logo" />
+                </a>
+            </div>
 
-                    <div class="nav-item">
-                        <a
-                            href="https://github.com/mei-lu"
-                            target="_blank"
-                            rel="noopener noreferrer">
-                            <img src={GithubIcon.src} alt="Github logo" />
-                        </a>
-                    </div>
-
-                    <div class="nav-item">
-                        <a
-                            href="https://www.linkedin.com/in/meil"
-                            target="_blank"
-                            rel="noopener noreferrer">
-                            <img src={LinkedinIcon.src} alt="LinkedIn logo" />
-                        </a>
-                    </div>
-
-                    <div class="nav-item">
-                        <a
-                            href="/resume.pdf"
-                            target="_blank"
-                            rel="noopener noreferrer">
-                            <img src={ResumeIcon.src} alt="Resume icon" />
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <section id="portfolio">
-                <div class="lock">
-                    <p>projects in development...</p>
-                </div>
-            </section>
-        </main>
-    </body>
-</html>
-
-<script src="../scripts/app.ts"></script>
+            <div class="nav-item">
+                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                    <img src={ResumeIcon.src} alt="Resume icon" />
+                </a>
+            </div>
+        </div>
+    </section>
+</main>

@@ -1,5 +1,7 @@
 @import "./reset.css";
 
+@import "./components/nav.css";
+
 :root {
     --color-fairy-500: #f0c4cc;
     --color-fairy-50: #ffefed;
@@ -41,6 +43,7 @@
 body {
     background-color: var(--color-fairy-50);
     font-family: var(--font-text);
+    color: var(--color-brown);
 }
 
 .sr-only {

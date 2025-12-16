@@ -1,0 +1,43 @@
+---
+import "../styles/pages/garden.css"
+import Nav from "./components/nav.astro"
+const posts = import.meta.glob("./pages/garden/*.md", { eager: true })
+console.log(posts)
+---
+
+<!-- TODO: figure out how to import the md files, ts logic? -->
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+        <link rel="stylesheet" href="https://use.typekit.net/wzu6jqe.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+            rel="stylesheet"
+        />
+        <title>mei's digital garden</title>
+    </head>
+    <header class="lock" data-size="small">
+        <a href="#main" class="skip-link sr-only"> Skip to main content </a>
+        <Nav />
+    </header>
+    <body>
+        <main id="garden">
+            <section id="garden-content">
+                <p>
+                    my collection of thoughts, interests, and cool things on the
+                    internet
+                </p>
+                <div id="garden-latest"></div>
+            </section>
+        </main>
+    </body>
+    <script src="../scripts/garden.ts"></script>
+
+
+</html>

@@ -1,0 +1,5 @@
+@import "../main.css";
+
+nav {
+    padding: var(--spacing-md) 0;
+}

@@ -1,0 +1,44 @@
+---
+import Nav from "../components/nav.astro"
+
+interface Props {
+    title: string
+    description?: string
+    js: string
+}
+
+const { title, description = "", js } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+        <link rel="stylesheet" href="https://use.typekit.net/wzu6jqe.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?
+  family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?
+  family=Lexend:wght@100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+            rel="stylesheet"
+        />
+        <title>{title}</title>
+        {description && <meta name="description" content={description} />}
+        <slot name="head" />
+    </head>
+    <body>
+        <nav class="lock" data-size="small">
+            <a href="#main" class="skip-link sr-only">Skip to main content</a>
+            <Nav />
+        </nav>
+
+        <slot />
+
+        <script type="module" src={js}></script>
+    </body>
+</html>
