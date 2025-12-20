@@ -2,7 +2,7 @@
 layout: ../../templates/layouts/blogpost.astro
 title: my test garden post
 date: 11/30/25
-tag: Himanshu
+category: Fun
 description: this is a description of my garden post
 ---
 

@@ -4,12 +4,19 @@ import { glob, file } from "astro/loaders"
 
 import { z } from "astro/zod"
 
+const CATEGORIES = ["Projects", "Reflections", "Notes", "Fun"] as const
+
 const garden = defineCollection({
-    loader: glob({ pattern: "**/*.md", base: "./pages/garden" }),
-    schema: { title: z.string, date: z.coerce.date, description: z.string },
+    loader: glob({ pattern: "*.md", base: "./src/pages/garden" }),
+    schema: z.object({
+        title: z.string(),
+        category: z.enum(CATEGORIES),
+        date: z.coerce.date(),
+        description: z.string(),
+    }),
 })
 const portfolio = defineCollection({
-    loader: glob({ pattern: "**/*.md", base: "./pages/garden" }),
+    loader: glob({ pattern: "**/*.md", base: "./src/pages/garden" }),
 })
 
 export const collections = { garden, portfolio }

@@ -2,14 +2,12 @@
 import "../styles/pages/garden.css"
 import Layout from "../templates/layouts/layout.astro"
 import { getLatestPosts, getPostsByYear } from "../scripts/garden.ts"
-import type { MarkdownContent } from "astro"
 import PostListing from "../templates/components/garden/post-listing.astro"
-import { getCollection } from "astro:content"
 
-const latestPost: MarkdownContent[] = getLatestPosts(1)
+const latestPost = await getLatestPosts(1)
 const currentDateTime = new Date()
 const currentYear = currentDateTime.getFullYear()
-const testing: MarkdownContent[] = getPostsByYear(2025)
+const testing = await getPostsByYear(2025)
 
 // const getPostMonths = () => await getCollection(
 //     "garden",
@@ -64,8 +62,7 @@ console.log(getPostsByYear(currentYear))
         <section id="garden-results">
             <div class="garden-header">NOVEMBER</div>
             {latestPost.map((post) => <PostListing postFile={post} />)}
-            <!-- {testing.map((post) => <PostListing postFile={post} />)} -->
-            <!-- {testing.map((post) => <PostListing postFile={post} />)} -->
+            {testing.map((post) => <PostListing postFile={post} />)}
         </section>
     </main>
 </Layout>

@@ -1,43 +1,26 @@
-import type { AstroInstance, MarkdownContent, Props } from "astro"
+import type { AstroInstance, Props } from "astro"
 import { getCollection } from "astro:content"
 
-const gardenPostsMatches = import.meta.glob<MarkdownContent>(
-    "../pages/garden/**/*.md",
-    {
-        eager: true,
-    }
-)
-
-const gardenPosts = Object.values(gardenPostsMatches)
-
 export const getPostsByYear = async (year: number) => {
-    const yearlyPosts: MarkdownContent[] = await getCollection(
-        "garden",
-        (data: MarkdownContent) => {
-            return data.date.getFullYear() == year
-        }
-    )
+    const yearlyPosts = await getCollection("garden", (post) => {
+        const postYear = post.data.date.getFullYear()
+        return postYear == year
+    })
 
-    console.log(yearlyPosts)
     return yearlyPosts
 }
 
-export const getLatestPosts = (limit: number): MarkdownContent[] => {
-    // gardenPosts.forEach((post) => {
-    //     console.log(typeof post)
-    //     console.log(post.url)
-    //     console.log(post.frontmatter)
-    // })
+// TODO: maybe toss
+export const getLatestPosts = async (limit: number) => {
+    const gardenPostsMatches = await getCollection("garden")
+
+    const gardenPosts = Object.values(gardenPostsMatches)
+
     return gardenPosts
         .sort(
             (a, b) =>
-                new Date(b.frontmatter.date).getTime() -
-                new Date(a.frontmatter.date).getTime()
+                new Date(b.data.date).getTime() -
+                new Date(a.data.date).getTime()
         )
         .slice(0, limit)
 }
-
-// const Garden = () => {}
-// document.addEventListener("DOMContentLoaded", () => {
-//     Garden()
-// })
