@@ -1,0 +1,37 @@
+@import "../main.css";
+
+.post-listing {
+    display: flex;
+    grid-gap: var(--spacing-xs);
+    width: 100%;
+
+    border: dotted 1px var(--color-brown);
+
+    & .date-content {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        padding: var(--spacing-sm);
+        border-right: dotted 1px var(--color-brown);
+        text-align: center;
+
+        & .month {
+            font-weight: bold;
+            font-size: var(--font-min);
+        }
+    }
+
+    & .text-content {
+        padding: var(--spacing-sm);
+        & * + * {
+            margin-top: var(--spacing-xs);
+        }
+        & .post-title {
+            font-size: var(--font-sm);
+        }
+
+        & .post-description {
+            font-size: var(--font-xs);
+        }
+    }
+}

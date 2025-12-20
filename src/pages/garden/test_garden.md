@@ -1,12 +1,12 @@
 ---
-layout: ../layouts/_blogpost.astro
-title: my test garden post
+layout: ../../templates/layouts/blogpost.astro
+title: test 2
 date: 11/26/25
 tag: Himanshu
 description: this is a description of my garden post
 ---
 
-content about my digi_tal garden.
+content about my digital garden.
 
 some checklist of things to implement functionality-wise for it
 

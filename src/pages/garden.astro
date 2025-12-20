@@ -1,43 +1,71 @@
 ---
 import "../styles/pages/garden.css"
-import Nav from "./components/nav.astro"
-const posts = import.meta.glob("./pages/garden/*.md", { eager: true })
-console.log(posts)
+import Layout from "../templates/layouts/layout.astro"
+import { getLatestPosts, getPostsByYear } from "../scripts/garden.ts"
+import type { MarkdownContent } from "astro"
+import PostListing from "../templates/components/garden/post-listing.astro"
+import { getCollection } from "astro:content"
+
+const latestPost: MarkdownContent[] = getLatestPosts(1)
+const currentDateTime = new Date()
+const currentYear = currentDateTime.getFullYear()
+const testing: MarkdownContent[] = getPostsByYear(2025)
+
+// const getPostMonths = () => await getCollection(
+//     "garden",
+//     ({ data }: { data: MarkdownContent }) => {
+//         const currentYear = currentDateTime.getFullYear()
+
+//         const months: Set<string> = new Set()
+//         const postDate: Date = data.date
+//         const postYear = postDate.getFullYear()
+
+console.log(getPostsByYear(currentYear))
+//     }
+// )
 ---
 
-<!-- TODO: figure out how to import the md files, ts logic? -->
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-        <link rel="stylesheet" href="https://use.typekit.net/wzu6jqe.css" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-            rel="stylesheet"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
-            rel="stylesheet"
-        />
-        <title>mei's digital garden</title>
-    </head>
-    <header class="lock" data-size="small">
-        <a href="#main" class="skip-link sr-only"> Skip to main content </a>
-        <Nav />
-    </header>
-    <body>
-        <main id="garden">
-            <section id="garden-content">
-                <p>
-                    my collection of thoughts, interests, and cool things on the
-                    internet
-                </p>
-                <div id="garden-latest"></div>
-            </section>
-        </main>
-    </body>
-    <script src="../scripts/garden.ts"></script>
+<Layout title="mei's digital garden">
+    <main id="garden" class="lock">
+        <section id="garden-content">
+            <h1>digital garden</h1>
 
+            <p>
+                my online <a
+                    target="_blank"
+                    aria-label="Wikipedia page of the Hobonichi Techo"
+                    href="https://en.wikipedia.org/wiki/Hobonichi_Techo"
+                    >techo</a
+                >
+                collecting thoughts, interests, and cool things
+            </p>
+        </section>
 
-</html>
+        <section id="garden-filters">
+            <div id="garden-searchbar">search</div>
+            <div>
+                <div>
+                    <span>&lt</span>
+                    <span>2025</span>
+                    <span>&gt</span>
+                </div>
+
+                <div>
+                    <span>jan</span>
+                    <span>5</span>
+                </div>
+                <div>
+                    <span>feb</span>
+                    <span>2</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="garden-results">
+            <div class="garden-header">NOVEMBER</div>
+            {latestPost.map((post) => <PostListing postFile={post} />)}
+            <!-- {testing.map((post) => <PostListing postFile={post} />)} -->
+            <!-- {testing.map((post) => <PostListing postFile={post} />)} -->
+        </section>
+    </main>
+</Layout>

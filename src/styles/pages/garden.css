@@ -1,4 +1,9 @@
 @import "../main.css";
 
 #garden {
+    & .garden-header {
+        background-color: var(--color-brown);
+        color: var(--color-white);
+        padding: var(--spacing-xs);
+    }
 }

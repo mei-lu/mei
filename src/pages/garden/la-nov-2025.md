@@ -1,5 +1,5 @@
 ---
-layout: ../layouts/_blogpost.astro
+layout: ../../templates/layouts/blogpost.astro
 title: my test garden post
 date: 11/30/25
 tag: Himanshu

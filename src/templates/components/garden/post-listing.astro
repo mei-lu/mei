@@ -1,0 +1,40 @@
+---
+import "../../../styles/components/post-listing.css"
+
+const { postFile } = Astro.props
+const MONTHS = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+]
+
+const title: string = postFile.frontmatter.title
+const url: string = postFile.url
+const date: Date = new Date(postFile.frontmatter.date)
+const month: string = MONTHS[date.getMonth()]
+const day: number = date.getDate()
+const description: string = postFile.frontmatter.description
+---
+
+<article class="post-listing">
+    <div class="date-content">
+        <p class="month">{month}</p>
+        <p class="day">{day}</p>
+        <span class="moon-phase">O</span>
+    </div>
+    <div class="text-content">
+        <p class="post-title">
+            <a href={url}>{title}</a>
+        </p>
+        <p class="post-description">{description}</p>
+    </div>
+</article>
