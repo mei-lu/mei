@@ -1,10 +1,7 @@
 import { defineCollection } from "astro:content"
-
 import { glob, file } from "astro/loaders"
-
 import { z } from "astro/zod"
-
-const CATEGORIES = ["Projects", "Reflections", "Notes", "Fun"] as const
+import { CATEGORIES } from "./scripts/_types"
 
 const garden = defineCollection({
     loader: glob({ pattern: "*.md", base: "./src/pages/garden" }),

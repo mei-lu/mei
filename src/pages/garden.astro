@@ -1,26 +1,21 @@
 ---
 import "../styles/pages/garden.css"
 import Layout from "../templates/layouts/layout.astro"
-import { getLatestPosts, getPostsByYear } from "../scripts/garden.ts"
+import {
+    getLatestPosts,
+    getPostsByYear,
+    getPostMonths,
+    groupPostsByMonth,
+} from "../scripts/garden.ts"
 import PostListing from "../templates/components/garden/post-listing.astro"
-
+import { MONTHS } from "../scripts/_types"
 const latestPost = await getLatestPosts(1)
 const currentDateTime = new Date()
 const currentYear = currentDateTime.getFullYear()
-const testing = await getPostsByYear(2025)
+const currentYearPosts = await getPostsByYear(currentYear)
+const monthsForCurrentYear = getPostMonths(currentYearPosts)
 
-// const getPostMonths = () => await getCollection(
-//     "garden",
-//     ({ data }: { data: MarkdownContent }) => {
-//         const currentYear = currentDateTime.getFullYear()
-
-//         const months: Set<string> = new Set()
-//         const postDate: Date = data.date
-//         const postYear = postDate.getFullYear()
-
-console.log(getPostsByYear(currentYear))
-//     }
-// )
+const postsByMonth = groupPostsByMonth(currentYearPosts)
 ---
 
 <Layout title="mei's digital garden">
@@ -60,9 +55,24 @@ console.log(getPostsByYear(currentYear))
         </section>
 
         <section id="garden-results">
-            <div class="garden-header">NOVEMBER</div>
-            {latestPost.map((post) => <PostListing postFile={post} />)}
-            {testing.map((post) => <PostListing postFile={post} />)}
+            {
+                Object.keys(postsByMonth).map((key) => {
+                    const posts = postsByMonth[key]
+                    const monthNumber = Number(key)
+
+                    return (
+                        <>
+                            <div class="garden-header">
+                                {MONTHS[monthNumber]}
+                            </div>
+
+                            {posts.map((post) => (
+                                <PostListing postFile={post} />
+                            ))}
+                        </>
+                    )
+                })
+            }
         </section>
     </main>
 </Layout>
