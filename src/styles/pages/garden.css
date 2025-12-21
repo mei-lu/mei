@@ -6,4 +6,17 @@
         color: var(--color-white);
         padding: var(--spacing-xs);
     }
+
+    & #garden-categories {
+        display: flex;
+
+        & .garden-category-tag {
+            border: 1px var(--color-brown) solid;
+            padding: var(--spacing-xs);
+
+            & + .garden-category-tag {
+                margin-left: var(--spacing-xs);
+            }
+        }
+    }
 }

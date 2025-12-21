@@ -8,7 +8,7 @@ import {
     groupPostsByMonth,
 } from "../scripts/garden.ts"
 import PostListing from "../templates/components/garden/post-listing.astro"
-import { MONTHS } from "../scripts/_types"
+import { CATEGORIES, MONTHS } from "../scripts/_types"
 const latestPost = await getLatestPosts(1)
 const currentDateTime = new Date()
 const currentYear = currentDateTime.getFullYear()
@@ -24,33 +24,37 @@ const postsByMonth = groupPostsByMonth(currentYearPosts)
             <h1>digital garden</h1>
 
             <p>
-                my online <a
+                my digital <a
                     target="_blank"
                     aria-label="Wikipedia page of the Hobonichi Techo"
                     href="https://en.wikipedia.org/wiki/Hobonichi_Techo"
                     >techo</a
                 >
-                collecting thoughts, interests, and cool things
+                collecting reflections and interesting things
             </p>
         </section>
 
         <section id="garden-filters">
-            <div id="garden-searchbar">search</div>
-            <div>
+            <div id="garden-toggle-year">
                 <div>
                     <span>&lt</span>
-                    <span>2025</span>
+                    <span>{currentYear}</span>
                     <span>&gt</span>
                 </div>
+            </div>
 
-                <div>
-                    <span>jan</span>
-                    <span>5</span>
-                </div>
-                <div>
-                    <span>feb</span>
-                    <span>2</span>
-                </div>
+            <div id="garden-searchbar"><input placeholder="search" /></div>
+
+            <div id="garden-categories">
+                {
+                    CATEGORIES.map((category) => {
+                        return (
+                            <div class="garden-category-tag">
+                                <span>{category}</span>
+                            </div>
+                        )
+                    })
+                }
             </div>
         </section>
 

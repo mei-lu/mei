@@ -12,8 +12,5 @@ const garden = defineCollection({
         description: z.string(),
     }),
 })
-const portfolio = defineCollection({
-    loader: glob({ pattern: "**/*.md", base: "./src/pages/garden" }),
-})
 
-export const collections = { garden, portfolio }
+export const collections = { garden }
