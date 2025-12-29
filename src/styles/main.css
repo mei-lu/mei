@@ -32,7 +32,7 @@
     --font-xl: 48px;
     --font-2xl: 52px;
 
-    --page-contain: 72rem;
+    --page-contain: 60ch;
     --page-contain-small: 50rem;
 
     --breakpoint-sm: 480px;
