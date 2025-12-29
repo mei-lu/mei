@@ -38,8 +38,8 @@ await updatePostsIndex()
         </section>
 
         <section id="garden-filters">
-            <div id="garden-search">
-                <input placeholder="Search" />
+            <div>
+                <input id="garden-search" type="search" placeholder="Search" />
             </div>
             <div id="garden-categories">
                 {
@@ -64,18 +64,22 @@ await updatePostsIndex()
     import type { PostCategory, PostResult } from "../scripts/_types"
     import { MONTHS } from "../scripts/_types"
     import PostData from "../content/posts.json"
+    import { debounce } from "../scripts/utilities"
 
     const Garden = async () => {
         const categoryTags = document.querySelectorAll(
             ".garden-category-tag"
         ) as NodeListOf<HTMLElement>
+        const searchInput = document.querySelector(
+            "#garden-search"
+        ) as HTMLInputElement
         const resultsContainer = document.querySelector("#garden-results")
 
         let searchTerm: string = ""
         let searchCategories: Set<string> = new Set()
         let searchYear: number = new Date().getFullYear()
 
-        if (!categoryTags || !resultsContainer) {
+        if (!categoryTags || !resultsContainer || !searchInput) {
             console.warn("Missing page elements")
             return
         }
@@ -237,10 +241,17 @@ await updatePostsIndex()
             })
         }
 
+        const setSearch = () => {
+            searchInput.addEventListener("input", () => {
+                searchTerm = searchInput.value
+                debounce(() => updateResults(), 400)()
+            })
+        }
+
         categoryTags.forEach((categoryTag) => {
             setCategoryTags(categoryTag)
         })
-
+        setSearch()
         updateResults()
     }
 
