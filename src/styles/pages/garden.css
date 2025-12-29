@@ -18,6 +18,11 @@
             & + .garden-category-tag {
                 margin-left: var(--spacing-xs);
             }
+
+            &[data-selected="true"] {
+                background-color: var(--color-brown);
+                color: var(--color-white);
+            }
         }
     }
 }

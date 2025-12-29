@@ -215,9 +215,24 @@ await updatePostsIndex()
             const category = categoryTag.getAttribute(
                 "data-category"
             ) as PostCategory
+            const selectedAttribute = "data-selected"
 
             categoryTag.addEventListener("click", () => {
-                searchCategories.add(category)
+                const prevCategorySelected =
+                    categoryTag.getAttribute(selectedAttribute) === "true"
+                const categorySelected = !prevCategorySelected
+
+                categoryTag.setAttribute(
+                    selectedAttribute,
+                    String(categorySelected)
+                )
+
+                if (categorySelected) {
+                    searchCategories.add(category)
+                } else {
+                    searchCategories.delete(category)
+                }
+
                 updateResults()
             })
         }
