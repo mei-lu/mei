@@ -3,14 +3,14 @@ import "../../../styles/components/post-listing.css"
 import { MONTHS } from "../../../scripts/_types"
 const { postFile } = Astro.props
 
-const title: string = postFile.data.title
+const title: string = postFile.title
 const filePath: string = postFile.filePath
-const url = "/" + filePath.replace(/^src\/pages\//, "").replace(/\.[^/.]+$/, "")
-const date: Date = new Date(postFile.data.date)
+const url = "/" + postFile.id
+const date: Date = new Date(postFile.date)
 const month: string = MONTHS[date.getMonth()]
 const day: number = date.getDate()
-const description: string = postFile.data.description
-const category: string = postFile.data.category
+const description: string = postFile.description
+const category: string = postFile.category
 ---
 
 <article class="post-listing">

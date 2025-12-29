@@ -13,4 +13,14 @@ export const MONTHS = [
     "Dec",
 ]
 
-export const CATEGORIES = ["Projects", "Reflections", "Notes", "Fun"] as const
+export const CATEGORIES = ["Projects", "Tech", "Art", "Fun"] as const
+
+export type PostCategory = (typeof CATEGORIES)[number]
+
+export type PostResult = {
+    slug: string
+    title: string
+    date: Date
+    description: string
+    category: PostCategory
+}

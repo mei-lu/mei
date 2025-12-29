@@ -2,21 +2,32 @@
 import "../styles/pages/garden.css"
 import Layout from "../templates/layouts/layout.astro"
 import {
-    getLatestPosts,
-    getPostsByYear,
-    getPostMonths,
-    groupPostsByMonth,
+    groupPostResultsByMonth,
+    readPostsIndex,
+    updatePostsIndex,
 } from "../scripts/garden.ts"
 import PostListing from "../templates/components/garden/post-listing.astro"
 import { CATEGORIES, MONTHS } from "../scripts/_types"
-const latestPost = await getLatestPosts(1)
-const currentDateTime = new Date()
-const currentYear = currentDateTime.getFullYear()
-const currentYearPosts = await getPostsByYear(currentYear)
-const monthsForCurrentYear = getPostMonths(currentYearPosts)
 
-const postsByMonth = groupPostsByMonth(currentYearPosts)
+await updatePostsIndex()
+const unfilteredPosts = await readPostsIndex()
+const unfilteredPostsByMonth = groupPostResultsByMonth(unfilteredPosts)
 ---
+
+<template id="post-template">
+    <article class="post-listing">
+        <div class="date-content">
+            <p class="month"></p>
+            <p class="day"></p>
+            <p class="year"></p>
+        </div>
+        <div class="text-content">
+            <p class="category"></p>
+            <p class="post-title"><a></a></p>
+            <p class="post-description"></p>
+        </div>
+    </article>
+</template>
 
 <Layout title="mei's digital garden">
     <main id="garden" class="lock">
@@ -35,21 +46,13 @@ const postsByMonth = groupPostsByMonth(currentYearPosts)
         </section>
 
         <section id="garden-filters">
-            <div id="garden-toggle-year">
-                <div>
-                    <span>&lt</span>
-                    <span>{currentYear}</span>
-                    <span>&gt</span>
-                </div>
-            </div>
-
-            <div id="garden-searchbar"><input placeholder="search" /></div>
-
             <div id="garden-categories">
                 {
                     CATEGORIES.map((category) => {
                         return (
-                            <div class="garden-category-tag">
+                            <div
+                                class="garden-category-tag"
+                                data-category={category}>
                                 <span>{category}</span>
                             </div>
                         )
@@ -58,25 +61,174 @@ const postsByMonth = groupPostsByMonth(currentYearPosts)
             </div>
         </section>
 
-        <section id="garden-results">
-            {
-                Object.keys(postsByMonth).map((key) => {
-                    const posts = postsByMonth[key]
-                    const monthNumber = Number(key)
-
-                    return (
-                        <>
-                            <div class="garden-header">
-                                {MONTHS[monthNumber]}
-                            </div>
-
-                            {posts.map((post) => (
-                                <PostListing postFile={post} />
-                            ))}
-                        </>
-                    )
-                })
-            }
-        </section>
+        <section id="garden-results"></section>
     </main>
 </Layout>
+
+<script>
+    import type { PostCategory, PostResult } from "../scripts/_types"
+    import { MONTHS } from "../scripts/_types"
+
+    const Garden = async () => {
+        const categoryTags = document.querySelectorAll(
+            ".garden-category-tag"
+        ) as NodeListOf<HTMLElement>
+        const resultsContainer = document.querySelector("#garden-results")
+
+        if (!categoryTags || !resultsContainer) {
+            console.warn("Missing page elements")
+            return
+        }
+
+        const endpointQuery = await fetch("/garden/results")
+        const endpointData = (await endpointQuery.json()) as PostResult[]
+        let searchTerm: string = ""
+        let searchCategories: Set<PostCategory> = new Set()
+        let searchYear: number = new Date().getFullYear()
+
+        const updateResults = () => {
+            const renderPosts = (
+                postsByMonth: Record<string, PostResult[]>
+            ) => {
+                resultsContainer.innerHTML = ""
+                const postListingTemplate =
+                    document.querySelector<HTMLTemplateElement>(
+                        "#post-template"
+                    )
+
+                if (!postListingTemplate) {
+                    console.warn("Missing post listing")
+                    return
+                }
+
+                const sortedKeys = Object.keys(postsByMonth).sort(
+                    (a, b) => Number(b) - Number(a)
+                )
+
+                for (const key of sortedKeys) {
+                    const monthIndex = Number(key)
+                    const posts = postsByMonth[key]
+                    const header = document.createElement("div")
+                    header.className = "garden-header"
+                    header.textContent = MONTHS[monthIndex]
+                    resultsContainer.appendChild(header)
+
+                    for (const post of posts) {
+                        const fragment = postListingTemplate.content.cloneNode(
+                            true
+                        ) as DocumentFragment
+                        const postDate = new Date(post.date)
+                        const month = fragment.querySelector(".month")
+                        const day = fragment.querySelector(".day")
+                        const year = fragment.querySelector(".year")
+                        const category = fragment.querySelector(".category")
+                        const title = fragment.querySelector(".post-title a")
+                        const description =
+                            fragment.querySelector(".post-description")
+
+                        const slug = post.slug.replace(/\.md$/, "")
+
+                        if (month) month.textContent = MONTHS[monthIndex]
+                        if (day) day.textContent = String(postDate.getDate())
+                        if (year) year.textContent = String(postDate.getFullYear())
+                        if (category) category.textContent = post.category
+                        if (title) {
+                            title.textContent = post.title
+                            title.setAttribute("href", `/garden/${slug}`)
+                        }
+                        if (description)
+                            description.textContent = post.description
+
+                        resultsContainer.appendChild(fragment)
+                    }
+                }
+            }
+
+            const filterPosts = ({
+                year,
+                categories,
+                search,
+            }: {
+                year?: number
+                categories?: Set<PostCategory>
+                search?: string
+            }) => {
+                const q = search?.toLowerCase().trim()
+
+                return endpointData
+                    .filter((post) => {
+                        const postYear = new Date(post.date).getFullYear()
+                        if (year && postYear !== year) return false
+
+                        if (
+                            categories &&
+                            categories.size > 0 &&
+                            !categories.has(post.category)
+                        ) {
+                            return false
+                        }
+
+                        if (q) {
+                            const haystack =
+                                `${post.title} ${post.description}`.toLowerCase()
+                            if (!haystack.includes(q)) return false
+                        }
+
+                        return true
+                    })
+                    .sort(
+                        (a, b) =>
+                            new Date(b.date).getTime() -
+                            new Date(a.date).getTime()
+                    )
+            }
+
+            const groupPostsByMonth = (
+                posts: PostResult[]
+            ): Record<string, PostResult[]> => {
+                const grouped: Record<string, PostResult[]> = {}
+
+                for (const post of posts) {
+                    const date = new Date(post.date)
+                    const key = date.getMonth()
+
+                    if (!grouped[key]) {
+                        grouped[key] = []
+                    }
+
+                    grouped[key].push(post)
+                }
+
+                return grouped
+            }
+
+            const newPosts = filterPosts({
+                search: searchTerm,
+                categories: searchCategories,
+                year: searchYear,
+            })
+
+            const results = groupPostsByMonth(newPosts)
+            renderPosts(results)
+        }
+
+        const setCategoryTags = (categoryTag: HTMLElement) => {
+            const category = categoryTag.getAttribute(
+                "data-category"
+            ) as PostCategory
+
+            categoryTag.addEventListener("click", () => {
+                searchCategories.add(category)
+                updateResults()
+            })
+        }
+
+        categoryTags.forEach((categoryTag) => {
+            setCategoryTags(categoryTag)
+        })
+
+        updateResults()
+    }
+
+    Garden()
+</script>

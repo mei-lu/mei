@@ -2,7 +2,7 @@
 layout: ../../templates/layouts/blogpost.astro
 title: test 2
 date: 10/26/25
-category: Fun
+category: Art
 description: this is a description of my garden post
 ---
 

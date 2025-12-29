@@ -1,4 +1,5 @@
 @import "../main.css";
+@import "../components/post-listing.css";
 
 #garden {
     & .garden-header {
