@@ -1,24 +1,30 @@
 ---
 import { getCollection } from "astro:content"
+import Layout from "../../templates/layouts/layout.astro"
 
 export const getStaticPaths = async () => {
     const gardenPosts = await getCollection("garden")
-
+    console.log(gardenPosts)
     return gardenPosts.map((post) => ({
-        params: { slug: post.id },
-        props: { post },
+        params: {
+            slug: post.id,
+        },
+        props: {
+            post,
+        },
     }))
 }
 
-const { frontmatter } = Astro.props
+const { post } = Astro.props
+const title = post.data.title
+const description = post.data.description
+const body = post.body
 ---
 
-<html>
-    <head>
-        <meta charset="utf-8" />
-    </head>
-    <h1>{frontmatter.title}</h1>
-    <p>{frontmatter.description}</p>
-
-
-</html>
+<Layout title={title}>
+    <div class="lock" data-size="small">
+        <h1>{title}</h1>
+        <p>{description}</p>
+        <p>{body}</p>
+    </div>
+</Layout>
