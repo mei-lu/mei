@@ -4,7 +4,7 @@ import { z } from "astro/zod"
 import { CATEGORIES } from "./scripts/_types"
 
 const garden = defineCollection({
-    loader: glob({ pattern: "*.md", base: "./src/pages/garden" }),
+    loader: glob({ pattern: "*.md", base: "./src/content/garden" }),
     schema: z.object({
         title: z.string(),
         category: z.enum(CATEGORIES),

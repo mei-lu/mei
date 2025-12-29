@@ -1,63 +1,19 @@
-import { getCollection, type CollectionEntry } from "astro:content"
+import { getCollection } from "astro:content"
+import { writeFile } from "node:fs/promises"
 
-export const getPostMonths = (posts: CollectionEntry<"garden">[]) => {
-    const months = new Set<number>()
+export const updatePostsIndex = async () => {
+    const posts = await getCollection("garden")
 
-    posts.forEach((post) => {
-        const postDate = post.data.date
-        const postMonth = postDate.getMonth()
+    const data = posts
+        .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+        .map((post) => ({
+            slug: post.id,
+            title: post.data.title,
+            date: post.data.date,
+            description: post.data.description,
+            category: post.data.category,
+        }))
 
-        months.add(postMonth)
-    })
-
-    return months
-}
-
-export const getPostsByYear = async (year: number) => {
-    const yearlyPosts = await getCollection("garden", (post) => {
-        const postYear = post.data.date.getFullYear()
-        return postYear == year
-    })
-
-    return yearlyPosts
-        .sort(
-            (a, b) =>
-                new Date(b.data.date).getTime() -
-                new Date(a.data.date).getTime()
-        )
-        .slice()
-}
-
-export const groupPostsByMonth = (
-    posts: CollectionEntry<"garden">[]
-): Record<string, CollectionEntry<"garden">[]> => {
-    const grouped: Record<string, CollectionEntry<"garden">[]> = {}
-
-    for (const post of posts) {
-        const date = post.data.date
-        const key = date.getMonth()
-
-        if (!grouped[key]) {
-            grouped[key] = []
-        }
-
-        grouped[key].push(post)
-    }
-
-    return grouped
-}
-
-// TODO: maybe toss
-export const getLatestPosts = async (limit: number) => {
-    const gardenPostsMatches = await getCollection("garden")
-
-    const gardenPosts = Object.values(gardenPostsMatches)
-
-    return gardenPosts
-        .sort(
-            (a, b) =>
-                new Date(b.data.date).getTime() -
-                new Date(a.data.date).getTime()
-        )
-        .slice(0, limit)
+    const outputUrl = new URL("../content/posts.json", import.meta.url)
+    await writeFile(outputUrl, JSON.stringify(data, null, 2), "utf-8")
 }
