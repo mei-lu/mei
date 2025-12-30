@@ -1,15 +1,25 @@
 @import "../main.css";
 
+.garden-header {
+    background-color: var(--color-brown);
+    color: var(--color-white);
+    padding: var(--spacing-xs);
+    border: 1px var(--color-brown) solid;
+}
+
 .post-listing {
     display: flex;
     grid-gap: var(--spacing-xs);
-    width: 100%;
-
     border: dotted 1px var(--color-brown);
+
+    & + & {
+        border-top: none;
+    }
 
     & .date-content {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-content: center;
         padding: var(--spacing-sm);
         border-right: dotted 1px var(--color-brown);
@@ -19,6 +29,10 @@
             font-weight: bold;
             font-size: var(--font-min);
         }
+
+        & .year {
+            font-size: var(--font-min);
+        }
     }
 
     & .text-content {
@@ -26,6 +40,12 @@
         & * + * {
             margin-top: var(--spacing-xs);
         }
+
+        & .category {
+            font-size: var(--font-xs);
+            font-weight: bold;
+        }
+
         & .post-title {
             font-size: var(--font-sm);
         }

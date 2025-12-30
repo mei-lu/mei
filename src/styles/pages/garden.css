@@ -2,14 +2,14 @@
 @import "../components/post-listing.css";
 
 #garden {
-    & .garden-header {
-        background-color: var(--color-brown);
-        color: var(--color-white);
-        padding: var(--spacing-xs);
+    & #garden-search {
+        margin: var(--spacing-xs) 0;
     }
 
     & #garden-categories {
         display: flex;
+        position: relative;
+        top: 2px;
 
         & .garden-category-tag {
             border: 1px var(--color-brown) solid;
@@ -24,5 +24,10 @@
                 color: var(--color-white);
             }
         }
+    }
+
+    & #garden-search {
+        padding: 10px;
+        width: 100%;
     }
 }

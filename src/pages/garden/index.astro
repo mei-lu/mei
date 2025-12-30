@@ -23,38 +23,32 @@ await updatePostsIndex()
 
 <Layout title="mei's digital garden">
     <main id="garden" class="lock">
-        <section id="garden-content">
-            <h1>digital garden</h1>
+        <p>
+            My digital <a
+                target="_blank"
+                aria-label="Wikipedia page of the Hobonichi Techo"
+                href="https://en.wikipedia.org/wiki/Hobonichi_Techo">techo</a
+            >
+            collecting my thoughts and interests
+        </p>
 
-            <p>
-                my digital <a
-                    target="_blank"
-                    aria-label="Wikipedia page of the Hobonichi Techo"
-                    href="https://en.wikipedia.org/wiki/Hobonichi_Techo"
-                    >techo</a
-                >
-                collecting reflections and interesting things
-            </p>
-        </section>
+        <div>
+            <input id="garden-search" type="search" placeholder="Search" />
+        </div>
 
-        <section id="garden-filters">
-            <div>
-                <input id="garden-search" type="search" placeholder="Search" />
-            </div>
-            <div id="garden-categories">
-                {
-                    CATEGORIES.map((category) => {
-                        return (
-                            <div
-                                class="garden-category-tag"
-                                data-category={category}>
-                                <span>{category}</span>
-                            </div>
-                        )
-                    })
-                }
-            </div>
-        </section>
+        <div id="garden-categories">
+            {
+                CATEGORIES.map((category) => {
+                    return (
+                        <div
+                            class="garden-category-tag"
+                            data-category={category}>
+                            <span>{category}</span>
+                        </div>
+                    )
+                })
+            }
+        </div>
 
         <section id="garden-results"></section>
     </main>
@@ -76,8 +70,7 @@ await updatePostsIndex()
         const resultsContainer = document.querySelector("#garden-results")
 
         let searchTerm: string = ""
-        let searchCategories: Set<string> = new Set()
-        let searchYear: number = new Date().getFullYear()
+        let searchCategory: Set<string> = new Set()
 
         if (!categoryTags || !resultsContainer || !searchInput) {
             console.warn("Missing page elements")
@@ -88,27 +81,28 @@ await updatePostsIndex()
             const renderPosts = (
                 postsByMonth: Record<string, PostResult[]>
             ) => {
-                resultsContainer.innerHTML = ""
                 const postListingTemplate =
                     document.querySelector<HTMLTemplateElement>(
                         "#post-template"
                     )
-
+                const sortedKeys = Object.keys(postsByMonth).sort(
+                    (a, b) => new Date(b).getTime() - new Date(a).getTime()
+                )
                 if (!postListingTemplate) {
                     console.warn("Missing post listing")
                     return
                 }
 
-                const sortedKeys = Object.keys(postsByMonth).sort(
-                    (a, b) => Number(b) - Number(a)
-                )
+                resultsContainer.innerHTML = ""
 
                 for (const key of sortedKeys) {
-                    const monthIndex = Number(key)
+                    const keyDate = new Date(key)
+                    const monthIndex = keyDate.getMonth()
+                    const keyYear = keyDate.getFullYear()
                     const posts = postsByMonth[key]
                     const header = document.createElement("div")
                     header.className = "garden-header"
-                    header.textContent = MONTHS[monthIndex]
+                    header.textContent = MONTHS[monthIndex] + " " + keyYear
                     resultsContainer.appendChild(header)
 
                     for (const post of posts) {
@@ -186,20 +180,26 @@ await updatePostsIndex()
                 }, postResults)
             }
 
-            const groupPostsByMonth = (
+            const groupPostsByTime = (
                 posts: PostResult[]
             ): Record<string, PostResult[]> => {
                 const grouped: Record<string, PostResult[]> = {}
 
                 for (const post of posts) {
                     const date = new Date(post.date)
-                    const key = date.getMonth()
+                    const key = new Date()
 
-                    if (!grouped[key]) {
-                        grouped[key] = []
+                    key.setMonth(date.getMonth())
+                    key.setDate(1)
+                    key.setFullYear(date.getFullYear())
+
+                    const keyString = key.toDateString()
+
+                    if (!grouped[keyString]) {
+                        grouped[keyString] = []
                     }
 
-                    grouped[key].push(post)
+                    grouped[keyString].push(post)
                 }
 
                 return grouped
@@ -207,11 +207,10 @@ await updatePostsIndex()
 
             const newPosts = filterPosts({
                 search: searchTerm,
-                categories: searchCategories,
-                year: searchYear,
+                categories: searchCategory,
             })
 
-            const results = groupPostsByMonth(newPosts)
+            const results = groupPostsByTime(newPosts)
             renderPosts(results)
         }
 
@@ -222,20 +221,16 @@ await updatePostsIndex()
             const selectedAttribute = "data-selected"
 
             categoryTag.addEventListener("click", () => {
-                const prevCategorySelected =
-                    categoryTag.getAttribute(selectedAttribute) === "true"
-                const categorySelected = !prevCategorySelected
-
-                categoryTag.setAttribute(
-                    selectedAttribute,
-                    String(categorySelected)
+                const selectedCategoryTag = document.querySelector(
+                    `.garden-category-tag[${selectedAttribute}=true]`
                 )
+                categoryTag.setAttribute(selectedAttribute, "true")
 
-                if (categorySelected) {
-                    searchCategories.add(category)
-                } else {
-                    searchCategories.delete(category)
+                if (selectedCategoryTag) {
+                    selectedCategoryTag.removeAttribute(selectedAttribute)
                 }
+
+                searchCategory = new Set([category])
 
                 updateResults()
             })
@@ -251,6 +246,7 @@ await updatePostsIndex()
         categoryTags.forEach((categoryTag) => {
             setCategoryTags(categoryTag)
         })
+
         setSearch()
         updateResults()
     }
