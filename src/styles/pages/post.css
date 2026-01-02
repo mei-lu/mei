@@ -1,0 +1,43 @@
+@import "../main.css";
+
+#post {
+    line-height: 18px;
+
+    & .return {
+        margin-bottom: var(--spacing-sm);
+        & a {
+            color: var(--color-brown);
+            text-decoration: none;
+        }
+    }
+
+    & .post-meta {
+        & * + * {
+            margin-top: var(--spacing-sm);
+        }
+
+        & .post-title {
+            font-size: var(--font-md);
+            font-weight: 700;
+        }
+
+        & .post-date {
+            font-size: var(--font-xs);
+        }
+
+        & .post-description {
+            font-size: var(--font-sm);
+        }
+
+        & + hr {
+            border: none;
+            margin: var(--spacing-md) 0;
+            background-color: var(--color-brown);
+            height: 1px;
+        }
+    }
+
+    & .post-body {
+        font-size: var(--font-xs);
+    }
+}

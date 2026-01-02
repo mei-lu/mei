@@ -1,10 +1,11 @@
 ---
 import { getCollection } from "astro:content"
 import Layout from "../../templates/layouts/layout.astro"
+import "../../styles/pages/post.css"
 
 export const getStaticPaths = async () => {
     const gardenPosts = await getCollection("garden")
-    console.log(gardenPosts)
+
     return gardenPosts.map((post) => ({
         params: {
             slug: post.id,
@@ -19,12 +20,23 @@ const { post } = Astro.props
 const title = post.data.title
 const description = post.data.description
 const body = post.body
+const date = new Date(post.data.date).toLocaleDateString()
 ---
 
 <Layout title={title}>
-    <div class="lock" data-size="small">
-        <h1>{title}</h1>
-        <p>{description}</p>
-        <p>{body}</p>
-    </div>
+    <main id="post">
+        <div class="lock">
+            <div class="return">
+                <a href="/garden" aria-label="Return to digital garden home"
+                    >Back</a>
+            </div>
+            <div class="post-meta">
+                <h1 class="post-title">{title}</h1>
+                <div class="post-date">Planted {date}</div>
+                <p class="post-description">{description}</p>
+            </div>
+            <hr />
+            <div class="post-body">{body}</div>
+        </div>
+    </main>
 </Layout>
