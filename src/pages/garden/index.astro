@@ -18,6 +18,8 @@ await updatePostsIndex()
             <p class="post-title"><a></a></p>
             <p class="post-description"></p>
         </div>
+
+        <div class="post-image"></div>
     </article>
 </template>
 
@@ -70,7 +72,7 @@ await updatePostsIndex()
         const resultsContainer = document.querySelector("#garden-results")
 
         let searchTerm: string = ""
-        let searchCategory: Set<string> = new Set()
+        let searchCategory: string | null = null
 
         if (!categoryTags || !resultsContainer || !searchInput) {
             console.warn("Missing page elements")
@@ -139,11 +141,11 @@ await updatePostsIndex()
 
             const filterPosts = ({
                 year,
-                categories,
+                category,
                 search,
             }: {
                 year?: number
-                categories?: Set<string>
+                category: string | null
                 search?: string
             }) => {
                 const postResults: PostResult[] = []
@@ -153,9 +155,9 @@ await updatePostsIndex()
                     if (year && postYear !== year) return postResults
 
                     if (
-                        categories &&
-                        categories.size > 0 &&
-                        !categories.has(post.category)
+                        category &&
+                        category.length > 0 &&
+                        category !== post.category
                     ) {
                         return postResults
                     }
@@ -207,7 +209,7 @@ await updatePostsIndex()
 
             const newPosts = filterPosts({
                 search: searchTerm,
-                categories: searchCategory,
+                category: searchCategory,
             })
 
             const results = groupPostsByTime(newPosts)
@@ -230,7 +232,11 @@ await updatePostsIndex()
                     selectedCategoryTag.removeAttribute(selectedAttribute)
                 }
 
-                searchCategory = new Set([category])
+                if (categoryTag.getAttribute(selectedAttribute) == "true") {
+                    searchCategory = category
+                } else {
+                    searchCategory = null
+                }
 
                 updateResults()
             })
