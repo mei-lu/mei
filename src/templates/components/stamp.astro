@@ -1,0 +1,50 @@
+---
+import "../../styles/components/stamp.css"
+
+interface StampProps {
+    title: string
+    browline: string
+    description: string
+    links: Record<string, string>
+    image: string
+    video: string
+}
+
+const { title, browline, description, links, image, video } =
+    Astro.props as StampProps
+---
+
+<div id="stamp">
+    <div class="stamp-image">
+        {image && <img src={image} />}
+        {
+            video && (
+                <video autoplay muted playsinline loop>
+                    <source src={video} type="video/mp4" />
+                </video>
+            )
+        }
+
+        <div class="meta">
+            <p>{browline}</p>
+            <p class="links">
+                {
+                    Object.entries(links).map(([name, url]) => {
+                        return (
+                            <a target="_blank" href={url}>
+                                {name}
+                            </a>
+                        )
+                    })
+                }
+            </p>
+        </div>
+    </div>
+
+    <div class="info">
+        <h2 class="title">
+            <a target="_blank" href="https://3d-cat-room.meilu.dev/">{title}</a>
+        </h2>
+        <p class="description">{description}</p>
+    </div>
+</div>

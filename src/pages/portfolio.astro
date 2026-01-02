@@ -1,5 +1,38 @@
 ---
+import Stamp from "../templates/components/stamp.astro"
 import Layout from "../templates/layouts/layout.astro"
+import "../styles/pages/portfolio.css"
+import CatRoom from "../assets/projects/cat-room.mp4"
 ---
 
-<Layout title="mei" js="/scripts/app.ts" />
+<Layout title="mei" js="/scripts/app.ts">
+    <main id="portfolio">
+        <div class="lock" data-size="small">
+            <div class="portfolio-grid">
+                <Stamp
+                    title="3D Cat Room"
+                    browline="Web / Three.js / Blender"
+                    description="A cute room with interactive objects in the browser"
+                    video={CatRoom}
+                    links={{
+                        Demo: "https://3d-cat-room.meilu.dev/",
+                        Blog: "/garden/3d-room-blender-threejs",
+                        GitHub: "",
+                    }}
+                />
+
+                <Stamp
+                    title="Portfolio Site"
+                    browline="Web / Astro"
+                    description="This site!"
+                    image="https://bokksu.com/cdn/shop/articles/my_melody5.png?v=1754404277"
+                    links={{
+                        Demo: "/",
+                        Blog: "/portfolio-site",
+                        GitHub: "",
+                    }}
+                />
+            </div>
+        </div>
+    </main>
+</Layout>
