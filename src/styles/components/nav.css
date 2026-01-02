@@ -2,4 +2,14 @@
 
 nav {
     padding: var(--spacing-md) 0;
+    display: flex;
+    font-size: var(--font-sm);
+
+    & a {
+        color: var(--color-brown);
+    }
+
+    & * + * {
+        margin-left: var(--spacing-xs);
+    }
 }

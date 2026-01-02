@@ -1,13 +1,12 @@
 ---
 import Nav from "../components/nav.astro"
-
 interface Props {
     title: string
     description?: string
     js?: string
 }
 
-const { title, description = "", js } = Astro.props
+const { title, description = "" } = Astro.props
 ---
 
 <!doctype html>
@@ -38,7 +37,11 @@ const { title, description = "", js } = Astro.props
         </nav>
 
         <slot />
-
-        <script type="module" src={js}></script>
     </body>
 </html>
+
+<script>
+    import gsap from "gsap"
+
+    gsap.to("body", { opacity: 1, duration: 0.3, ease: "power1.in" })
+</script>
