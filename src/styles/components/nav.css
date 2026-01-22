@@ -1,15 +1,39 @@
 @import "../main.css";
 
 nav {
-    padding: var(--spacing-md) 0;
-    display: flex;
-    font-size: var(--font-sm);
+    & .items {
+        padding: var(--spacing-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: var(--font-sm);
 
-    & a {
-        color: var(--color-brown);
-    }
+        & .nav-item {
+            & a {
+                display: flex;
+                align-items: flex-end;
+                color: var(--color-brown);
+                text-decoration: none;
 
-    & * + * {
-        margin-left: var(--spacing-xs);
+                & img {
+                    width: 20px;
+                    margin-right: var(--spacing-xs);
+                }
+
+                & span {
+                    font-weight: bold;
+                }
+            }
+
+            & + & {
+                margin-left: var(--spacing-xs);
+            }
+        }
     }
+}
+
+.nav-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
 }

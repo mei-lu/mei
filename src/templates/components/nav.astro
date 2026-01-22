@@ -1,11 +1,25 @@
 ---
 import "../../styles/components/nav.css"
+import homeIcon from "../../assets/homeIcon.svg"
+import portfolioIcon from "../../assets/portfolioIcon.svg"
+import gardenIcon from "../../assets/gardenIcon.svg"
 ---
 
 <nav>
-    <a href="/">Home</a>
+    <div class="lock items">
+        <div class="nav-item">
+            <a href="/"><img src={homeIcon.src} /> <span>Home</span></a>
+        </div>
 
-    <a href="/portfolio">Portfolio</a>
-
-    <a href="/garden">Digital Garden</a>
+        <div class="nav-item">
+            <a href="/portfolio"
+                ><img src={portfolioIcon.src} /><span>Portfolio</span></a
+            >
+        </div>
+        <div class="nav-item">
+            <a href="/garden"
+                ><img src={gardenIcon.src} /><span>Digital Garden</span></a
+            >
+        </div>
+    </div>
 </nav>
