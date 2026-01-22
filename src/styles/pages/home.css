@@ -1,40 +1,202 @@
 @import "../main.css";
 
 #home {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: var(--spacing-md) 0;
-
-    & #intro-container {
-        height: 90vh;
+    & a {
+        color: var(--color-brown);
     }
 
-    & .text-red {
-        color: var(--color-rose);
+    & section + section {
+        margin-top: var(--spacing-lg);
+
+        @media (--breakpoint-md-min) {
+            margin-top: var(--spacing-2xl);
+        }
     }
 
-    & hero-image {
-        aspect-ratio: 1/1;
+    & section:last-of-type {
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    & .heading {
+        font-family: var(--font-round);
+        font-size: var(--font-xl);
+        fill: var(--color-brown);
     }
 
     & #portfolio {
         & .portfolio-layout {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1rem; /* spacing between items */
+            gap: 1rem;
 
             @media (max-width: 768px) {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+    }
 
-        & instax {
-            height: auto;
-        }
+    & .bubble-letter {
+        font-family: var(--font-round);
+        font-size: var(--font-3xl);
+        fill: var(--color-brown);
     }
 
     & #hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        min-height: 50vh;
+
+        & #name {
+            text-align: center;
+            font-size: var(--font-xl);
+
+            @media (--breakpoint-sm-min) {
+                font-size: var(--font-2xl);
+            }
+
+            @media (--breakpoint-lg-min) {
+                font-size: var(--font-3xl);
+            }
+        }
+
+        & .hero-container {
+            position: relative;
+
+            & #hero-image {
+                width: 50%;
+                position: absolute;
+                right: 0;
+                top: -200px;
+                transform: rotate(-30deg);
+            }
+        }
+    }
+
+    & #garden-intro {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-2xl);
+        flex-direction: column-reverse;
+
+        @media (--breakpoint-md-min) {
+            flex-direction: row;
+            gap: var(--spacing-lg);
+        }
+
+        & #deco-image {
+            width: 60vw;
+
+            @media (--breakpoint-md-min) {
+                width: 37vw;
+            }
+        }
+    }
+
+    & #scrap-text {
+        position: relative;
+        max-width: 500px;
+
+        @media (min-width: var(--breakpoint-sm)) {
+            left: 10%;
+        }
+
+        & p {
+            position: relative;
+            z-index: 99;
+            background-color: var(--color-fairy);
+            padding: var(--spacing-lg);
+            text-align: center;
+            text-wrap: pretty;
+            font-size: var(--font-sm);
+            letter-spacing: 0.05em;
+        }
+
+        & #washi {
+            position: absolute;
+            top: 0;
+            left: -10%;
+            transform: translateY(50%);
+            width: 25%;
+            transform: rotate(-30deg);
+            z-index: 999;
+        }
+
+        & #scrappaper {
+            position: absolute;
+            top: -20%;
+            left: 10%;
+            width: 80%;
+
+            @media (--breakpoint-sm-min) {
+                top: -45%;
+                left: 10%;
+            }
+        }
+    }
+
+    & .petal {
+        position: absolute;
+        opacity: 0;
+    }
+
+    & .intro-text {
+        font-family: var(--font-round);
+        font-size: var(--font-xl);
+    }
+
+    & #portfolio-showcase {
+        text-align: center;
+
+        & #instax-slider {
+            position: relative;
+            height: 200px;
+
+            @media (--breakpoint-md-min) {
+                height: 400px;
+            }
+
+            & .instax-card {
+                aspect-ratio: 2/3;
+                background: var(--color-fairy);
+                position: absolute;
+                height: 100px;
+
+                @media (--breakpoint-md-min) {
+                    height: 300px;
+                }
+
+                & .instax-image {
+                    border: 1px solid black;
+                    margin-bottom: 0;
+                    margin: var(--spacing-min);
+
+                    @media (--breakpoint-md-min) {
+                        margin: var(--spacing-sm);
+                    }
+
+                    & img {
+                        width: 100%;
+                        height: 50px;
+                        object-fit: cover;
+
+                        @media (--breakpoint-md-min) {
+                            height: 200px;
+                        }
+                    }
+                }
+
+                & .instax-info {
+                    padding: var(--spacing-min);
+                    font-size: var(--font-min);
+
+                    @media (--breakpoint-md-min) {
+                        padding: var(--spacing-sm);
+                    }
+                }
+            }
+        }
     }
 
     & #contact {
@@ -43,54 +205,29 @@
         & .contact-list {
             display: flex;
             justify-content: center;
-            grid-gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
 
-            & .nav-item {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                font-weight: 200;
-
-                & > a {
-                    margin-top: var(--spacing-sm);
-                    font-size: var(--font-sm);
+            & .contact-item {
+                & img {
+                    width: 52px;
                 }
 
-                & img {
-                    width: 28px;
+                & + & {
+                    margin-left: var(--spacing-lg);
+                }
+
+                &:nth-child(1) {
+                    transform: rotate(-20deg);
+                }
+
+                &:nth-child(2) {
+                    transform: rotate(8deg);
+                }
+
+                &:nth-child(3) {
+                    transform: rotate(16deg);
                 }
             }
-        }
-    }
-
-    & #portfolio {
-        text-align: center;
-    }
-
-    & #description {
-        font-size: var(--font-sm);
-        letter-spacing: 0.05em;
-        line-height: 1.2;
-        text-wrap: pretty;
-        text-align: center;
-        align-items: center;
-        justify-items: center;
-
-        & > img {
-            display: block;
-            height: auto;
-            min-width: 0;
-            max-width: 100%;
-            width: 50%;
-        }
-    }
-
-    & #hero-deco-text {
-        & h1 {
-            text-align: center;
-            color: var(--color-pink);
-            font-size: var(--font-xl);
-            font-family: var(--font-lex);
         }
     }
 }

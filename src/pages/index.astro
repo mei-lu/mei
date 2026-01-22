@@ -4,51 +4,254 @@ import GithubIcon from "../assets/github.svg"
 import EmailIcon from "../assets/email.svg"
 import LinkedinIcon from "../assets/linkedin.svg"
 import Layout from "../templates/layouts/layout.astro"
+import TestImage from "../assets/kirby.png"
+import Camera from "../assets/camera.png"
+import Techo from "../assets/techo.png"
+import Stamp from "../assets/stamp.webp"
+import Washi from "../assets/washi.webp"
+import Scrappaper from "../assets/scrappaper.png"
+import SweetPiano from "../assets/sweetpiano.webp"
 ---
 
-<Layout title="mei" js="/scripts/app.ts" />
-<main id="home">
-    <section id="hero">
-        <div id="description" class="lock">
-            <p>
-                I'm a creative developer who loves cute things! ₊˚⊹
-                <br /><br />
-                Currently working as a Full Stack Engineer and getting my M.S. in
-                Artificial Intelligence from the University of Maryland
-            </p>
-        </div>
-    </section>
+<Layout title="mei">
+    <div id="home">
+        <section id="hero" class="lock" data-size="min">
+            <p class="bubble-letter" id="name">Mei Lu</p>
 
-    <section id="contact">
-        <h2>Get in Touch!</h2>
-        <div class="contact-list">
-            <div class="nav-item">
-                <a
-                    href="mailto:lumeidev@gmail.com"
-                    aria-label="Send me an email">
-                    <img src={EmailIcon.src} alt="Email icon" />
-                </a>
-            </div>
+            <div class="hero-container">
+                <p>A creative developer who loves cute things! ₊˚⊹</p>
 
-            <div class="nav-item">
-                <a
-                    href="https://github.com/mei-lu"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="View my GitHub">
-                    <img src={GithubIcon.src} alt="Github logo" />
-                </a>
+                <p>
+                    Currently working as a Full Stack Engineer and pursuing my
+                    M.S. in Artificial Intelligence from the University of
+                    Maryland
+                </p>
             </div>
+        </section>
 
-            <div class="nav-item">
-                <a
-                    href="https://www.linkedin.com/in/meil"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="View my LinkedIn">
-                    <img src={LinkedinIcon.src} alt="LinkedIn logo" />
-                </a>
+        <section id="portfolio-showcase" class="lock">
+            <!-- <p class="intro-text">Portfolio</p> -->
+            <!-- <p><a href="/portfolio">View All</a></p> -->
+
+            <div id="instax-slider">
+                <svg
+                    viewBox="0 0 443 60"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        id="instax-path"
+                        d="M0.157181 0.47464C152.657 50.9746 311.157 54.9746 442.657 0.47464"
+                        stroke="black"></path>
+                </svg>
+                <div class="instax-wrapper">
+                    <div id="instax-1" class="instax-card">
+                        <div class="instax-inner">
+                            <div class="instax-image">
+                                <img src={TestImage.src} />
+                            </div>
+                            <p class="instax-info">art</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="instax-wrapper">
+                    <div id="instax-2" class="instax-card">
+                        <div class="instax-image">
+                            <img src={TestImage.src} />
+                        </div>
+                        <p class="instax-info">web</p>
+                    </div>
+                </div>
+                <div class="instax-wrapper">
+                    <div id="instax-3" class="instax-card">
+                        <div class="instax-image">
+                            <img src={TestImage.src} />
+                        </div>
+                        <p class="instax-info">blah</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
-</main>
+        </section>
+
+        <section id="garden-intro" class="lock">
+            <div id="scrap-text">
+                <img id="washi" src={Washi.src} />
+                <p>
+                    I’m always coding, illustrating, memory-keeping, dancing,
+                    and studying Japanese. I share reflections on them in my <a
+                        href="/garden">digital garden</a
+                    >.
+                </p>
+
+                <img id="scrappaper" src={Scrappaper.src} />
+            </div>
+            <div>
+                <img id="deco-image" src={SweetPiano.src} />
+            </div>
+        </section>
+
+        <section id="contact" class="lock">
+            <p class="heading">Send A Snail Mail</p>
+
+            <div class="contact-list">
+                <div class="contact-item">
+                    <a
+                        href="mailto:lumeidev@gmail.com"
+                        aria-label="Send me an email">
+                        <img src={EmailIcon.src} alt="Email icon" />
+                    </a>
+                </div>
+
+                <div class="contact-item">
+                    <a
+                        href="https://github.com/mei-lu"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="View my GitHub">
+                        <img src={GithubIcon.src} alt="Github logo" />
+                    </a>
+                </div>
+
+                <div class="contact-item">
+                    <a
+                        href="https://www.linkedin.com/in/meil"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="View my LinkedIn">
+                        <img src={LinkedinIcon.src} alt="LinkedIn logo" />
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+</Layout>
+
+<script>
+    import gsap from "gsap"
+    import { SplitText } from "gsap/all"
+    import Sakura1 from "../assets/sakura1.svg?raw"
+    import Sakura2 from "../assets/sakura2.svg?raw"
+    import Sakura3 from "../assets/sakura3.svg?raw"
+    import Sakura4 from "../assets/sakura4.svg?raw"
+    import MotionPathPlugin from "gsap/MotionPathPlugin"
+
+    gsap.registerPlugin(MotionPathPlugin)
+
+    const SakuraPetals = () => {
+        const heroSection = document.querySelector("#hero")
+        const sakuraPetals = [Sakura1, Sakura2, Sakura3, Sakura4]
+        const petalListLength = sakuraPetals.length
+        const PETAL_COUNT = 20
+        const createPetal = (petalIndex: number) => {
+            const petalSVG = sakuraPetals[petalIndex]
+
+            return petalSVG
+        }
+
+        const petalElements: HTMLElement[] = []
+        const width = window.innerWidth
+
+        if (!heroSection) {
+            return
+        }
+
+        const heroHeight = heroSection.clientHeight
+
+        for (let i = 0; i < PETAL_COUNT; i++) {
+            const randomPetalIndex = Math.floor(Math.random() * petalListLength)
+            const petalContainer = document.createElement("span")
+            petalContainer.className = "petal"
+            petalContainer.ariaHidden = "true"
+
+            const petal = createPetal(randomPetalIndex)
+            petalContainer.innerHTML = petal
+            petalElements.push(petalContainer)
+        }
+
+        const initalizePetal = (petal: HTMLElement) => {
+            gsap.set(petal, {
+                scale: 0.08,
+                left: `random(-30, ${width / 2})`,
+                y: gsap.utils.random(-heroHeight, -20),
+                rotate: gsap.utils.random(-50, 50),
+                opacity: 1,
+            })
+
+            gsap.to(petal, {
+                scale: gsap.utils.random(0.2, 0.3),
+                top: heroHeight,
+                left: "100%",
+                ease: "power1.inOut",
+                duration: 4,
+                repeat: -1,
+                opacity: 0,
+            })
+        }
+
+        const startShower = () => {
+            petalElements.forEach((petal, index) => {
+                heroSection.appendChild(petal)
+                gsap.delayedCall(index * 0.2, () => initalizePetal(petal))
+            })
+        }
+
+        startShower()
+    }
+
+    SakuraPetals()
+
+    // END TEST
+
+    const nameSplilt = SplitText.create("#name")
+    const nameLetters = nameSplilt.chars
+
+    gsap.from(nameLetters, {
+        scale: 0,
+        duration: 1,
+        stagger: 0.25,
+        autoAlpha: 0,
+    })
+
+    gsap.fromTo(
+        "#hero-image",
+        { opacity: 0 },
+        { left: -30, duration: 1.2, opacity: 1, ease: "sine.in" }
+    )
+    gsap.to("#camera", { rotate: -20, left: "0", scale: 1.5 })
+    gsap.to("#stamp", { rotate: 20, left: "30%", scale: 0.6 })
+
+    const AnimateInstax = (id: string, endPosition: number) => {
+        gsap.to(`#${id}`, {
+            scrollTrigger: "#instax-slider",
+            motionPath: {
+                path: "#instax-path",
+                align: "#instax-path",
+                alignOrigin: [0.5, 0],
+                autoRotate: true,
+                end: endPosition,
+            },
+            duration: 3,
+            ease: "power1.inOut",
+        })
+
+        gsap.to(".instax-wrapper", {
+            rotation: 3,
+            x: 6,
+            yoyo: true,
+            repeat: -1,
+            duration: 2.7,
+            ease: "sine.inOut",
+        })
+    }
+
+    AnimateInstax("instax-1", 0.85)
+    AnimateInstax("instax-2", 0.5)
+    AnimateInstax("instax-3", 0.15)
+
+    gsap.from("#deco-image", {
+        scaleX: 0.2,
+        scaleY: 0.2,
+        transformOrigin: "50% 50%",
+        duration: 1,
+        ease: "power2.out",
+    })
+</script>
