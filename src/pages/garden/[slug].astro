@@ -24,19 +24,17 @@ const date = new Date(post.data.date).toLocaleDateString()
 ---
 
 <Layout title={title}>
-    <main id="post">
-        <div class="lock">
-            <div class="return">
-                <a href="/garden" aria-label="Return to digital garden home"
-                    >Back</a>
-            </div>
-            <div class="post-meta">
-                <h1 class="post-title">{title}</h1>
-                <div class="post-date">Planted {date}</div>
-                <p class="post-description">{description}</p>
-            </div>
-            <hr />
-            <div class="post-body">{body}</div>
+    <div id="post" class="lock" data-size="small">
+        <div class="return">
+            <a href="/garden" aria-label="Return to digital garden home">Back</a
+            >
         </div>
-    </main>
+        <div class="post-meta">
+            <h1 class="post-title">{title}</h1>
+            <div class="post-date">Planted {date}</div>
+            <p class="post-description">{description}</p>
+        </div>
+        <hr />
+        <div class="post-body">{body}</div>
+    </div>
 </Layout>
