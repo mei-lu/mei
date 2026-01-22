@@ -3,36 +3,60 @@ import Stamp from "../templates/components/stamp.astro"
 import Layout from "../templates/layouts/layout.astro"
 import "../styles/pages/portfolio.css"
 import CatRoom from "../assets/projects/cat-room.mp4"
+import DesignSystem from "../assets/projects/design-system.webp"
 ---
 
 <Layout title="mei" js="/scripts/app.ts">
-    <main id="portfolio">
-        <div class="lock" data-size="small">
-            <div class="portfolio-grid">
-                <Stamp
-                    title="3D Cat Room"
-                    browline="Web / Three.js / Blender"
-                    description="A cute room with interactive objects in the browser"
-                    video={CatRoom}
-                    links={{
-                        Demo: "https://3d-cat-room.meilu.dev/",
-                        Blog: "/garden/3d-room-blender-threejs",
-                        GitHub: "",
-                    }}
-                />
+    <div id="portfolio">
+        <div class="portfolio-grid lock">
+            <Stamp
+                title="3D Cat Room"
+                tags={["Web", "Three.js", "Blender"]}
+                description="A cute room with interactive objects in the browser"
+                video={CatRoom}
+                links={{
+                    Demo: "https://3d-cat-room.meilu.dev/",
+                    Blog: "/garden/3d-room-blender-threejs",
+                    GitHub: "",
+                }}
+            />
 
-                <Stamp
-                    title="Portfolio Site"
-                    browline="Web / Astro"
-                    description="This site!"
-                    image="https://bokksu.com/cdn/shop/articles/my_melody5.png?v=1754404277"
-                    links={{
-                        Demo: "/",
-                        Blog: "/portfolio-site",
-                        GitHub: "",
-                    }}
-                />
-            </div>
+            <Stamp
+                title="Mei's Site"
+                tags={["Web", "Astro"]}
+                description="Personal showcase featuring projects, interactive animations, and a blog with client-side search."
+                image="https://bokksu.com/cdn/shop/articles/my_melody5.png?v=1754404277"
+                links={{
+                    Demo: "/",
+                    Blog: "/portfolio-site",
+                    GitHub: "",
+                }}
+            />
+
+            <Stamp
+                title="University of Maryland Design System"
+                tags={["JS Library", "Web Components"]}
+                description="Created components and maintained library for a unified UMD brand."
+                image={DesignSystem.src}
+                links={{
+                    Demo: "https://designsystem.umd.edu/components",
+                    GitHub: "https://github.com/UMD-Digital/design-system",
+                }}
+            />
         </div>
-    </main>
+    </div>
 </Layout>
+
+<!-- <script>
+    import gsap from "gsap"
+
+    // const stamps = document.querySelectorAll(".stamp")
+
+    // stamps.forEach((stamp) => {
+    //     gsap.fromTo(
+    //         stamp,
+    //         { opacity: 0 },
+    //         { rotate: "random(-10, 10)", opacity: 1, duration: 2 }
+    //     )
+    // })
+</script> -->

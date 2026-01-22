@@ -1,7 +1,17 @@
+@import "../layout.css";
+@import "../main.css";
+
 #portfolio {
     & .portfolio-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-gap: var(--spacing-sm);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        grid-gap: var(--spacing-lg);
+
+        @media (--breakpoint-md-min) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: var(--spacing-xl);
+        }
     }
 }

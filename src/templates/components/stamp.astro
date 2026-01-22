@@ -3,18 +3,18 @@ import "../../styles/components/stamp.css"
 
 interface StampProps {
     title: string
-    browline: string
+    tags: string[]
     description: string
     links: Record<string, string>
     image: string
     video: string
 }
 
-const { title, browline, description, links, image, video } =
+const { title, tags, description, links, image, video } =
     Astro.props as StampProps
 ---
 
-<div id="stamp">
+<div class="stamp">
     <div class="stamp-image">
         {image && <img src={image} />}
         {
@@ -26,18 +26,26 @@ const { title, browline, description, links, image, video } =
         }
 
         <div class="meta">
-            <p>{browline}</p>
-            <p class="links">
-                {
-                    Object.entries(links).map(([name, url]) => {
-                        return (
-                            <a target="_blank" href={url}>
-                                {name}
-                            </a>
-                        )
-                    })
-                }
-            </p>
+            <div class="meta-text">
+                <p class="links">
+                    {
+                        Object.entries(links).map(([name, url]) => {
+                            return (
+                                <a target="_blank" href={url}>
+                                    {name}
+                                </a>
+                            )
+                        })
+                    }
+                </p>
+                <div class="tags">
+                    {
+                        tags.map((tag) => {
+                            return <p class="tag-item">{tag}</p>
+                        })
+                    }
+                </div>
+            </div>
         </div>
     </div>
 

@@ -1,46 +1,77 @@
-#stamp {
+.stamp {
     position: relative;
-    --r: 14px;
-    /* aspect-ratio: 1.5/1; */
-    padding: var(--spacing-sm);
-    background: var(--color-white);
-    mask:
-        radial-gradient(50% 50%, #0000 66%, #000 67%) round var(--r) var(--r) /
-            calc(2 * var(--r)) calc(2 * var(--r)),
-        conic-gradient(#000 0 0) content-box;
 
     & .stamp-image {
         position: relative;
+        padding: var(--spacing-sm);
+
+        background: var(--color-white);
+        --r: 14px;
+        mask:
+            radial-gradient(50% 50%, #0000 66%, #000 67%) round var(--r)
+                var(--r) / calc(2 * var(--r)) calc(2 * var(--r)),
+            conic-gradient(#000 0 0) content-box;
+
         & > img,
         video {
             object-fit: cover;
-            max-height: 200px;
+            width: 100%;
         }
     }
 
     & .meta {
         display: none;
         position: absolute;
-        top: 50%;
-        width: 100%;
+        top: 0;
+        left: 0;
         text-align: center;
         color: var(--color-white);
         z-index: 999;
+        height: 100%;
+        width: 100%;
 
-        & a {
-            color: var(--color-white);
+        & .tags {
+            margin-top: var(--spacing-xs);
+            & .tag-item {
+                display: inline-block;
+                padding: var(--spacing-min) var(--spacing-sm);
+                background-color: var(--color-brown);
+                color: var(--color-white);
+                border-radius: 30px;
+                font-size: var(--font-xs);
+
+                & + .tag-item {
+                    margin-left: var(--spacing-min);
+                }
+            }
+        }
+
+        & .links {
+            position: relative;
+
+            & a {
+                color: var(--color-white);
+            }
         }
     }
 
     & .info {
         padding: var(--spacing-sm);
+        background-color: var(--color-white);
 
         & .title {
             font-size: var(--font-sm);
+            font-weight: bold;
+            margin-bottom: var(--spacing-xs);
         }
 
         & .description {
             font-size: var(--font-xs);
+        }
+
+        & a {
+            text-decoration: none;
+            color: var(--color-brown);
         }
     }
 
@@ -60,7 +91,9 @@
         }
 
         & .meta {
-            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 }
