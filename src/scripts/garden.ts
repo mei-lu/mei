@@ -1,5 +1,6 @@
 import { getCollection } from "astro:content"
-import { writeFile } from "node:fs/promises"
+import { mkdir, writeFile } from "node:fs/promises"
+import path from "node:path"
 
 export const updatePostsIndex = async () => {
     const posts = await getCollection("garden")
@@ -14,6 +15,7 @@ export const updatePostsIndex = async () => {
             category: post.data.category,
         }))
 
-    const outputUrl = new URL("../content/posts.json", import.meta.url)
-    await writeFile(outputUrl, JSON.stringify(data, null, 2), "utf-8")
+    const outputPath = path.join(process.cwd(), "src", "content", "posts.json")
+    await mkdir(path.dirname(outputPath), { recursive: true })
+    await writeFile(outputPath, JSON.stringify(data, null, 2), "utf-8")
 }
