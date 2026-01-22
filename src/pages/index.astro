@@ -148,9 +148,11 @@ import SweetPiano from "../assets/sweetpiano.webp"
         }
 
         const petalElements: HTMLElement[] = []
-        const width = window.innerWidth
+        const width = document
+            .querySelector("#hero")
+            ?.getBoundingClientRect().width
 
-        if (!heroSection) {
+        if (!heroSection || !width) {
             return
         }
 
@@ -170,7 +172,7 @@ import SweetPiano from "../assets/sweetpiano.webp"
         const initalizePetal = (petal: HTMLElement) => {
             gsap.set(petal, {
                 scale: 0.08,
-                left: `random(-30, ${width / 2})`,
+                left: `random(-30, ${width * 0.2})`,
                 y: gsap.utils.random(-heroHeight, -20),
                 rotate: gsap.utils.random(-50, 50),
                 opacity: 1,
@@ -178,8 +180,8 @@ import SweetPiano from "../assets/sweetpiano.webp"
 
             gsap.to(petal, {
                 scale: gsap.utils.random(0.2, 0.3),
-                top: heroHeight,
-                left: "100%",
+                top: heroHeight + 100,
+                x: width + width * 0.2,
                 ease: "power1.inOut",
                 duration: 4,
                 repeat: -1,
