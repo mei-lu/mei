@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="13 2 22 24" shape-rendering="crispEdges" role="img" aria-label="Cute extra-wide pixel home icon (pink/brown, tight cropped)">
+
+  <!-- Palette -->
+  <!-- outline: #6B3F2A -->
+  <!-- roof:    #F49AB6 -->
+  <!-- wall:    #F7C6D6 -->
+  <!-- shade:   #E79BB6 -->
+  <!-- door:    #B87455 -->
+  <!-- window:  #FFF3F8 -->
+
+  <!-- ROOF OUTLINE -->
+  <rect x="22" y="2" width="4" height="2" fill="#6B3F2A"></rect>
+  <rect x="20" y="4" width="8" height="2" fill="#6B3F2A"></rect>
+  <rect x="18" y="6" width="12" height="2" fill="#6B3F2A"></rect>
+  <rect x="14" y="8" width="20" height="2" fill="#6B3F2A"></rect>
+
+  <!-- ROOF FILL -->
+  <rect x="21" y="4" width="6" height="2" fill="#F49AB6"></rect>
+  <rect x="19" y="6" width="10" height="2" fill="#F49AB6"></rect>
+  <rect x="15" y="8" width="18" height="2" fill="#F49AB6"></rect>
+  <rect x="15" y="10" width="18" height="2" fill="#E79BB6"></rect>
+
+  <!-- ROOF BASE -->
+  <rect x="13" y="10" width="2" height="2" fill="#6B3F2A"></rect>
+  <rect x="33" y="10" width="2" height="2" fill="#6B3F2A"></rect>
+  <rect x="13" y="12" width="22" height="2" fill="#6B3F2A"></rect>
+
+  <!-- HOUSE OUTLINE -->
+  <rect x="13" y="14" width="2" height="10" fill="#6B3F2A"></rect>
+  <rect x="33" y="14" width="2" height="10" fill="#6B3F2A"></rect>
+  <rect x="13" y="24" width="22" height="2" fill="#6B3F2A"></rect>
+
+  <!-- WALLS -->
+  <rect x="15" y="14" width="18" height="10" fill="#F7C6D6"></rect>
+  <rect x="29" y="14" width="4" height="10" fill="#E79BB6"></rect>
+
+  <!-- WINDOWS -->
+  <rect x="16" y="16" width="5" height="4" fill="#6B3F2A"></rect>
+  <rect x="17" y="17" width="3" height="2" fill="#FFF3F8"></rect>
+  <rect x="18" y="17" width="1" height="2" fill="#E79BB6"></rect>
+
+  <rect x="22" y="16" width="5" height="4" fill="#6B3F2A"></rect>
+  <rect x="23" y="17" width="3" height="2" fill="#FFF3F8"></rect>
+  <rect x="24" y="17" width="1" height="2" fill="#E79BB6"></rect>
+
+  <rect x="28" y="16" width="5" height="4" fill="#6B3F2A"></rect>
+  <rect x="29" y="17" width="3" height="2" fill="#FFF3F8"></rect>
+  <rect x="30" y="17" width="1" height="2" fill="#E79BB6"></rect>
+
+  <!-- DOOR -->
+  <rect x="23" y="18" width="6" height="8" fill="#6B3F2A"></rect>
+  <rect x="24" y="19" width="4" height="7" fill="#B87455"></rect>
+  <rect x="27" y="19" width="1" height="7" fill="#D59B7E"></rect>
+  <rect x="25" y="22" width="1" height="1" fill="#FFF3F8"></rect>
+
+  <!-- HEART DETAIL -->
+  <rect x="24" y="15" width="1" height="1" fill="#6B3F2A"></rect>
+  <rect x="26" y="15" width="1" height="1" fill="#6B3F2A"></rect>
+  <rect x="23" y="16" width="1" height="1" fill="#6B3F2A"></rect>
+  <rect x="25" y="16" width="1" height="1" fill="#6B3F2A"></rect>
+  <rect x="27" y="16" width="1" height="1" fill="#6B3F2A"></rect>
+  <rect x="24" y="17" width="3" height="1" fill="#6B3F2A"></rect>
+
+  <!-- CHIMNEY -->
+  <rect x="31" y="4" width="2" height="2" fill="#6B3F2A"></rect>
+  <rect x="31" y="6" width="2" height="4" fill="#B87455"></rect>
+
+</svg>
