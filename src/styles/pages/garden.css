@@ -1,9 +1,10 @@
 @import "../main.css";
+@import "../layout.css";
 @import "../components/post-listing.css";
 
 #garden {
-    & #garden-search {
-        margin: var(--spacing-xs) 0;
+    & .search-container {
+        margin-bottom: var(--spacing-lg);
     }
 
     & #garden-categories {
@@ -23,11 +24,19 @@
                 background-color: var(--color-brown);
                 color: var(--color-white);
             }
+
+            &:hover,
+            &:focus {
+                background-color: var(--color-brown-light);
+                color: var(--color-white);
+            }
         }
     }
 
     & #garden-search {
-        padding: 10px;
+        padding: var(--spacing-sm);
         width: 100%;
+        border: none;
+        border-radius: 50px;
     }
 }

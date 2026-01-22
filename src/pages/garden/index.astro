@@ -24,17 +24,8 @@ await updatePostsIndex()
 </template>
 
 <Layout title="mei's digital garden">
-    <main id="garden" class="lock">
-        <p>
-            My digital <a
-                target="_blank"
-                aria-label="Wikipedia page of the Hobonichi Techo"
-                href="https://en.wikipedia.org/wiki/Hobonichi_Techo">techo</a
-            >
-            collecting my thoughts and interests
-        </p>
-
-        <div>
+    <div id="garden" class="lock">
+        <div class="search-container">
             <input id="garden-search" type="search" placeholder="Search" />
         </div>
 
@@ -53,7 +44,7 @@ await updatePostsIndex()
         </div>
 
         <section id="garden-results"></section>
-    </main>
+    </div>
 </Layout>
 
 <script>

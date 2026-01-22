@@ -13,7 +13,7 @@ export const MONTHS = [
     "Dec",
 ]
 
-export const CATEGORIES = ["Projects", "Web", "Art"] as const
+export const CATEGORIES = ["Projects", "Tech", "Art", "Life"] as const
 
 export type PostCategory = (typeof CATEGORIES)[number]
 

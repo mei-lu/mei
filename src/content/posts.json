@@ -1,5 +1,33 @@
 [
   {
+    "slug": "mit-reality-hack-2026",
+    "title": "MIT Reality Hack 2026",
+    "date": "2026-01-25T05:00:00.000Z",
+    "description": "Memories and things I learned from the event!",
+    "category": "Tech"
+  },
+  {
+    "slug": "portfolio-site",
+    "title": "Portfolio Site",
+    "date": "2026-01-01T05:00:00.000Z",
+    "description": "Thought process between creating a personal portfolio site",
+    "category": "Projects"
+  },
+  {
+    "slug": "figure-drawing-bootcamp",
+    "title": "60 Day Figure Drawing Bootcamp",
+    "date": "2025-12-30T05:00:00.000Z",
+    "description": "My first experience in online art classes combined with 打卡 (dǎ kǎ) culture.",
+    "category": "Art"
+  },
+  {
+    "slug": "jlpt-n5",
+    "title": "Taking the Japanese Proficency Exam (JLPT N5)",
+    "date": "2025-12-10T05:00:00.000Z",
+    "description": "A finale to my year-long Japanese self study.",
+    "category": "Life"
+  },
+  {
     "slug": "3d-room-blender-threejs",
     "title": "3D Isometric Room in Three.js and Blender",
     "date": "2025-11-26T05:00:00.000Z",
