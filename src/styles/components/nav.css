@@ -11,7 +11,7 @@ nav {
         & .nav-item {
             & a {
                 display: flex;
-                align-items: flex-end;
+                align-items: center;
                 color: var(--color-brown);
                 text-decoration: none;
 

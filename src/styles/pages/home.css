@@ -47,6 +47,7 @@
         justify-content: center;
         text-align: center;
         min-height: 50vh;
+        margin-top: var(--spacing-lg);
 
         & #name {
             text-align: center;
