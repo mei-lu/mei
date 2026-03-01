@@ -24,4 +24,8 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# agents
+CLAUDE.md
+memory/
+
 .vscode
