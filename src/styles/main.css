@@ -1,7 +1,8 @@
 @import "./reset.css";
 @import "./components/nav.css";
 @import "./components/footer.css";
-@import url("https://use.typekit.net/wzu6jqe.css");
+/* @import url("https://use.typekit.net/wzu6jqe.css"); */
+@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Lexend:wght@100..900&display=swap");
 
 @custom-media --breakpoint-sm-min (min-width: 480px);
 @custom-media --breakpoint-md-min (min-width: 768px);
@@ -18,10 +19,10 @@
     --color-brown-light: #a48888;
     --color-pink: #ec889e;
 
-    --font-fancy: "amandine", sans-serif;
+    --font-fancy: "Cedarville Cursive", cursive;
     --font-text: "museo-sans-rounded", sans-serif;
     --font-lex: "Lexend", sans-serif;
-    --font-round: "ohno-softie-variable", sans-serif;
+    /* --font-round: "ohno-softie-variable", sans-serif; */
     --spacing-min: 4px;
     --spacing-xs: 8px;
     --spacing-sm: 16px;
