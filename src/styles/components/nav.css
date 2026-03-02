@@ -2,11 +2,12 @@
 
 nav {
     & .items {
-        padding: var(--spacing-sm);
+        padding: var(--spacing-md);
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: var(--font-sm);
+        gap: var(--spacing-sm);
 
         & .nav-item {
             & a {
