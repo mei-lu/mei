@@ -96,7 +96,7 @@ await updatePostsIndex()
                     const monthIndex = keyDate.getMonth()
                     const keyYear = keyDate.getFullYear()
                     const posts = postsByMonth[key]
-                    const header = document.createElement("div")
+                    const header = document.createElement("h2")
                     header.className = "garden-header"
                     header.textContent = MONTHS[monthIndex] + " " + keyYear
                     resultsContainer.appendChild(header)
