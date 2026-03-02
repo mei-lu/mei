@@ -146,20 +146,20 @@ import Layout from "../templates/layouts/layout.astro"
 
         const initalizePetal = (petal: HTMLElement) => {
             gsap.set(petal, {
-                scale: 0.15,
+                scale: 0.2,
                 left: `random(-300, -200)`,
-                y: gsap.utils.random(-100, 200),
+                y: gsap.utils.random(-100, 100),
                 x: gsap.utils.random(0, 200),
                 rotate: gsap.utils.random(-50, 50),
                 opacity: 1,
             })
 
             gsap.to(petal, {
-                scale: gsap.utils.random(0.2, 0.3),
+                scale: gsap.utils.random(0.2, 0.4),
                 top: 300,
-                x: width * 1.03,
+                x: gsap.utils.random(width * 0.8, width),
                 ease: "power1.inOut",
-                duration: 4,
+                duration: gsap.utils.random(5, 10),
                 repeat: -1,
                 opacity: 0,
             })
