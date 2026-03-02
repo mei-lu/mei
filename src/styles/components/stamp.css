@@ -6,11 +6,11 @@
         padding: var(--spacing-sm);
 
         background: var(--color-white);
-        --r: 14px;
+        /* --r: 14px;
         mask:
             radial-gradient(50% 50%, #0000 66%, #000 67%) round var(--r)
                 var(--r) / calc(2 * var(--r)) calc(2 * var(--r)),
-            conic-gradient(#000 0 0) content-box;
+            conic-gradient(#000 0 0) content-box; */
 
         & > img,
         video {

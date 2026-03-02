@@ -3,15 +3,20 @@
 
 #portfolio {
     & .portfolio-grid {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        grid-gap: var(--spacing-lg);
+        columns: 1;
 
         @media (--breakpoint-md-min) {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-gap: var(--spacing-xl);
+            columns: 2;
+            column-gap: var(--spacing-xl);
+        }
+
+        & .stamp {
+            break-inside: avoid;
+            margin-bottom: var(--spacing-lg);
+
+            @media (--breakpoint-md-min) {
+                margin-bottom: var(--spacing-xl);
+            }
         }
     }
 }
