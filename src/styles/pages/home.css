@@ -1,6 +1,18 @@
 @import "../main.css";
 
+@keyframes instax-sway {
+    0%,
+    100% {
+        transform: rotate(-2deg);
+    }
+    50% {
+        transform: rotate(2deg);
+    }
+}
+
 #home {
+    overflow: hidden;
+
     & a {
         color: var(--color-brown);
     }
@@ -9,7 +21,7 @@
         margin-top: var(--spacing-lg);
 
         @media (--breakpoint-md-min) {
-            margin-top: var(--spacing-2xl);
+            margin-top: var(--spacing-lg);
         }
     }
 
@@ -18,7 +30,7 @@
     }
 
     & .heading {
-        font-family: var(--font-round);
+        font-family: var(--font-fancy);
         font-size: var(--font-xl);
         fill: var(--color-brown);
     }
@@ -36,7 +48,7 @@
     }
 
     & .bubble-letter {
-        font-family: var(--font-round);
+        font-family: var(--font-fancy);
         font-size: var(--font-3xl);
         fill: var(--color-brown);
     }
@@ -46,12 +58,14 @@
         flex-direction: column;
         justify-content: center;
         text-align: center;
-        min-height: 50vh;
+        min-height: 40vh;
         margin-top: var(--spacing-lg);
+        position: relative;
 
         & #name {
             text-align: center;
             font-size: var(--font-xl);
+            text-transform: lowercase;
 
             @media (--breakpoint-sm-min) {
                 font-size: var(--font-2xl);
@@ -143,11 +157,11 @@
     }
 
     & .intro-text {
-        font-family: var(--font-round);
+        font-family: var(--font-fancy);
         font-size: var(--font-xl);
     }
 
-    & #portfolio-showcase {
+    & #contact {
         text-align: center;
 
         & #instax-slider {
@@ -158,23 +172,34 @@
                 height: 400px;
             }
 
+            & svg {
+                width: 100%;
+            }
+
+            & .instax-wrapper {
+                position: absolute;
+            }
+
             & .instax-card {
                 aspect-ratio: 2/3;
                 background: var(--color-fairy);
-                position: absolute;
                 height: 100px;
+                transform-origin: top center;
 
                 @media (--breakpoint-md-min) {
                     height: 300px;
                 }
 
+                @media (prefers-reduced-motion: no-preference) {
+                    animation: instax-sway 2.5s ease-in-out infinite;
+                }
+
                 & .instax-image {
-                    border: 1px solid black;
-                    margin-bottom: 0;
-                    margin: var(--spacing-min);
+                    padding: var(--spacing-min);
+                    padding-bottom: 0;
 
                     @media (--breakpoint-md-min) {
-                        margin: var(--spacing-sm);
+                        padding: var(--spacing-sm);
                     }
 
                     & img {
@@ -197,11 +222,15 @@
                     }
                 }
             }
-        }
-    }
 
-    & #contact {
-        text-align: center;
+            & #instax-2 .instax-card {
+                animation-delay: -0.8s;
+            }
+
+            & #instax-3 .instax-card {
+                animation-delay: -1.5s;
+            }
+        }
 
         & .contact-list {
             display: flex;

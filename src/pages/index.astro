@@ -4,13 +4,6 @@ import GithubIcon from "../assets/github.svg"
 import EmailIcon from "../assets/email.svg"
 import LinkedinIcon from "../assets/linkedin.svg"
 import Layout from "../templates/layouts/layout.astro"
-import TestImage from "../assets/kirby.png"
-import Camera from "../assets/camera.png"
-import Techo from "../assets/techo.png"
-import Stamp from "../assets/stamp.webp"
-import Washi from "../assets/washi.webp"
-import Scrappaper from "../assets/scrappaper.png"
-import SweetPiano from "../assets/sweetpiano.webp"
 ---
 
 <Layout title="mei">
@@ -20,25 +13,19 @@ import SweetPiano from "../assets/sweetpiano.webp"
 
             <div class="hero-container">
                 <p>
-                    I'm a creative developer interested in spatial computing,
-                    XR, and cute things! I love building joyful experiences in
-                    real time.
+                    I'm a creative developer interested in computer graphics, 3D
+                    art, and cute things! I am building interactive experiences
+                    in real time.
                     <br /><br />
 
                     Currently working as a Full Stack Engineer and pursuing my
                     M.S. in Artificial Intelligence from the University of
                     Maryland, College Park
-
-                    <br /><br />
-                    This site is under construction, pardon the dust!
                 </p>
             </div>
         </section>
 
-        <section id="portfolio-showcase" class="lock">
-            <!-- <p class="intro-text">Portfolio</p> -->
-            <!-- <p><a href="/portfolio">View All</a></p> -->
-
+        <section id="contact" class="lock">
             <div id="instax-slider">
                 <svg
                     viewBox="0 0 443 60"
@@ -49,82 +36,67 @@ import SweetPiano from "../assets/sweetpiano.webp"
                         d="M0.157181 0.47464C152.657 50.9746 311.157 54.9746 442.657 0.47464"
                         stroke="black"></path>
                 </svg>
-                <div class="instax-wrapper">
-                    <div id="instax-1" class="instax-card">
-                        <div class="instax-inner">
-                            <div class="instax-image">
-                                <img src={TestImage.src} />
-                            </div>
-                            <p class="instax-info">art</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="instax-wrapper">
-                    <div id="instax-2" class="instax-card">
+                <div id="instax-1" class="instax-wrapper">
+                    <div class="instax-card">
                         <div class="instax-image">
-                            <img src={TestImage.src} />
+                            <a
+                                href="https://www.linkedin.com/in/meil"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="instax-card"
+                                ><img
+                                    src={LinkedinIcon.src}
+                                    alt="LinkedIn"
+                                /></a
+                            >
                         </div>
-                        <p class="instax-info">web</p>
+                        <p class="instax-info">
+                            <a
+                                href="https://www.linkedin.com/in/meil"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="instax-card">LinkedIn</a
+                            >
+                        </p>
                     </div>
                 </div>
-                <div class="instax-wrapper">
-                    <div id="instax-3" class="instax-card">
+                <div id="instax-2" class="instax-wrapper">
+                    <div class="instax-card">
                         <div class="instax-image">
-                            <img src={TestImage.src} />
+                            <a
+                                href="https://github.com/mei-lu"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="instax-card"
+                                ><img src={GithubIcon.src} alt="GitHub" /></a
+                            >
                         </div>
-                        <p class="instax-info">blah</p>
+                        <p class="instax-info">
+                            <a
+                                href="https://github.com/mei-lu"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="instax-card">GitHub</a
+                            >
+                        </p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section id="garden-intro" class="lock">
-            <div id="scrap-text">
-                <img id="washi" src={Washi.src} />
-                <p>
-                    Alongside development, I'm also illustrating, dancing, and
-                    studying Japanese. I share reflections on everything in my <a
-                        href="/garden">digital garden</a
-                    >.
-                </p>
-
-                <img id="scrappaper" src={Scrappaper.src} />
-            </div>
-            <div>
-                <img id="deco-image" src={SweetPiano.src} />
-            </div>
-        </section>
-
-        <section id="contact" class="lock">
-            <p class="heading">Send A Snail Mail</p>
-
-            <div class="contact-list">
-                <div class="contact-item">
-                    <a
-                        href="mailto:lumeidev@gmail.com"
-                        aria-label="Send me an email">
-                        <img src={EmailIcon.src} alt="Email icon" />
-                    </a>
-                </div>
-
-                <div class="contact-item">
-                    <a
-                        href="https://github.com/mei-lu"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="View my GitHub">
-                        <img src={GithubIcon.src} alt="Github logo" />
-                    </a>
-                </div>
-
-                <div class="contact-item">
-                    <a
-                        href="https://www.linkedin.com/in/meil"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="View my LinkedIn">
-                        <img src={LinkedinIcon.src} alt="LinkedIn logo" />
-                    </a>
+                <div id="instax-3" class="instax-wrapper">
+                    <div class="instax-card">
+                        <div class="instax-image">
+                            <a
+                                href="mailto:lumeidev@gmail.com"
+                                class="instax-card"
+                                ><img src={EmailIcon.src} alt="Email" /></a
+                            >
+                        </div>
+                        <p class="instax-info">
+                            <a
+                                href="mailto:lumeidev@gmail.com"
+                                class="instax-card">Email</a
+                            >
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -139,24 +111,24 @@ import SweetPiano from "../assets/sweetpiano.webp"
     import Sakura3 from "../assets/sakura3.svg?raw"
     import Sakura4 from "../assets/sakura4.svg?raw"
     import MotionPathPlugin from "gsap/MotionPathPlugin"
+    import { debounce } from "../scripts/utilities"
 
     gsap.registerPlugin(MotionPathPlugin)
 
     const SakuraPetals = () => {
+        const PETAL_COUNT = 20
+
         const heroSection = document.querySelector("#hero")
         const sakuraPetals = [Sakura1, Sakura2, Sakura3, Sakura4]
         const petalListLength = sakuraPetals.length
-        const PETAL_COUNT = 20
+        const petalElements: HTMLElement[] = []
+        const width = window.innerWidth
+
         const createPetal = (petalIndex: number) => {
             const petalSVG = sakuraPetals[petalIndex]
 
             return petalSVG
         }
-
-        const petalElements: HTMLElement[] = []
-        const width = document
-            .querySelector("#hero")
-            ?.getBoundingClientRect().width
 
         if (!heroSection || !width) {
             return
@@ -177,8 +149,8 @@ import SweetPiano from "../assets/sweetpiano.webp"
 
         const initalizePetal = (petal: HTMLElement) => {
             gsap.set(petal, {
-                scale: 0.08,
-                left: `random(-30, ${width * 0.2})`,
+                scale: 0.1,
+                left: `random(-300, -200)`,
                 y: gsap.utils.random(-heroHeight, -20),
                 rotate: gsap.utils.random(-50, 50),
                 opacity: 1,
@@ -187,7 +159,7 @@ import SweetPiano from "../assets/sweetpiano.webp"
             gsap.to(petal, {
                 scale: gsap.utils.random(0.2, 0.3),
                 top: heroHeight + 100,
-                x: width + width * 0.2,
+                x: width * 0.8,
                 ease: "power1.inOut",
                 duration: 4,
                 repeat: -1,
@@ -205,61 +177,55 @@ import SweetPiano from "../assets/sweetpiano.webp"
         startShower()
     }
 
-    SakuraPetals()
+    const InstaxPolaroids = () => {
+        const positions = {
+            mobile: { "instax-1": 0.75, "instax-2": 0.5, "instax-3": 0.25 },
+            desktop: { "instax-1": 0.85, "instax-2": 0.5, "instax-3": 0.15 },
+        }
 
-    // END TEST
+        const placeCard = (id: keyof typeof positions.mobile) => {
+            const isMd = window.matchMedia("(min-width: 768px)").matches
+            const position = isMd ? positions.desktop[id] : positions.mobile[id]
 
-    const nameSplilt = SplitText.create("#name")
-    const nameLetters = nameSplilt.chars
+            gsap.set(`#${id}`, {
+                motionPath: {
+                    path: "#instax-path",
+                    align: "#instax-path",
+                    alignOrigin: [0.5, 0],
+                    autoRotate: true,
+                    end: position,
+                },
+            })
+        }
 
-    gsap.from(nameLetters, {
-        scale: 0,
-        duration: 1,
-        stagger: 0.25,
-        autoAlpha: 0,
-    })
+        const cards = ["instax-1", "instax-2", "instax-3"] as const
 
-    gsap.fromTo(
-        "#hero-image",
-        { opacity: 0 },
-        { left: -30, duration: 1.2, opacity: 1, ease: "sine.in" }
-    )
-    gsap.to("#camera", { rotate: -20, left: "0", scale: 1.5 })
-    gsap.to("#stamp", { rotate: 20, left: "30%", scale: 0.6 })
+        cards.forEach(placeCard)
 
-    const AnimateInstax = (id: string, endPosition: number) => {
-        gsap.to(`#${id}`, {
-            scrollTrigger: "#instax-slider",
-            motionPath: {
-                path: "#instax-path",
-                align: "#instax-path",
-                alignOrigin: [0.5, 0],
-                autoRotate: true,
-                end: endPosition,
-            },
-            duration: 3,
-            ease: "power1.inOut",
-        })
+        window.addEventListener(
+            "resize",
+            debounce(() => cards.forEach(placeCard), 150)
+        )
+    }
 
-        gsap.to(".instax-wrapper", {
-            rotation: 3,
-            x: 6,
-            yoyo: true,
-            repeat: -1,
-            duration: 2.7,
-            ease: "sine.inOut",
+    const AnimateName = () => {
+        const split = SplitText.create("#name")
+
+        gsap.from(split.chars, {
+            scale: 0,
+            duration: 1,
+            stagger: 0.25,
+            autoAlpha: 0,
         })
     }
 
-    AnimateInstax("instax-1", 0.85)
-    AnimateInstax("instax-2", 0.5)
-    AnimateInstax("instax-3", 0.15)
+    const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches
 
-    gsap.from("#deco-image", {
-        scaleX: 0.2,
-        scaleY: 0.2,
-        transformOrigin: "50% 50%",
-        duration: 1,
-        ease: "power2.out",
-    })
+    if (!prefersReducedMotion) {
+        SakuraPetals()
+        AnimateName()
+    }
+    InstaxPolaroids()
 </script>
