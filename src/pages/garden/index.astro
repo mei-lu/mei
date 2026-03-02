@@ -30,6 +30,9 @@ await updatePostsIndex()
         </div>
 
         <div id="garden-categories">
+            <div class="garden-category-tag" data-selected="true">
+                <span>All</span>
+            </div>
             {
                 CATEGORIES.map((category) => {
                     return (
@@ -223,11 +226,8 @@ await updatePostsIndex()
                     selectedCategoryTag.removeAttribute(selectedAttribute)
                 }
 
-                if (categoryTag.getAttribute(selectedAttribute) == "true") {
-                    searchCategory = category
-                } else {
-                    searchCategory = null
-                }
+                categoryTag.setAttribute(selectedAttribute, "true")
+                searchCategory = category ?? null
 
                 updateResults()
             })
