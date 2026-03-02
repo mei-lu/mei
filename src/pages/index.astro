@@ -116,13 +116,12 @@ import Layout from "../templates/layouts/layout.astro"
     gsap.registerPlugin(MotionPathPlugin)
 
     const SakuraPetals = () => {
-        const PETAL_COUNT = 20
+        const PETAL_COUNT = 25
 
-        const heroSection = document.querySelector("#hero")
         const sakuraPetals = [Sakura1, Sakura2, Sakura3, Sakura4]
         const petalListLength = sakuraPetals.length
         const petalElements: HTMLElement[] = []
-        const width = window.innerWidth
+        let width = window.innerWidth
 
         const createPetal = (petalIndex: number) => {
             const petalSVG = sakuraPetals[petalIndex]
@@ -130,11 +129,9 @@ import Layout from "../templates/layouts/layout.astro"
             return petalSVG
         }
 
-        if (!heroSection || !width) {
-            return
-        }
+        const homeSection = document.querySelector<HTMLElement>("#home")
 
-        const heroHeight = heroSection.clientHeight
+        if (!width || !homeSection) return
 
         for (let i = 0; i < PETAL_COUNT; i++) {
             const randomPetalIndex = Math.floor(Math.random() * petalListLength)
@@ -149,17 +146,18 @@ import Layout from "../templates/layouts/layout.astro"
 
         const initalizePetal = (petal: HTMLElement) => {
             gsap.set(petal, {
-                scale: 0.1,
+                scale: 0.15,
                 left: `random(-300, -200)`,
-                y: gsap.utils.random(-heroHeight, -20),
+                y: gsap.utils.random(-100, 200),
+                x: gsap.utils.random(0, 200),
                 rotate: gsap.utils.random(-50, 50),
                 opacity: 1,
             })
 
             gsap.to(petal, {
                 scale: gsap.utils.random(0.2, 0.3),
-                top: heroHeight + 100,
-                x: width * 0.8,
+                top: 300,
+                x: width * 1.03,
                 ease: "power1.inOut",
                 duration: 4,
                 repeat: -1,
@@ -169,17 +167,28 @@ import Layout from "../templates/layouts/layout.astro"
 
         const startShower = () => {
             petalElements.forEach((petal, index) => {
-                heroSection.appendChild(petal)
+                homeSection.appendChild(petal)
                 gsap.delayedCall(index * 0.2, () => initalizePetal(petal))
             })
         }
 
         startShower()
+
+        window.addEventListener(
+            "resize",
+            debounce(() => {
+                width = window.innerWidth
+                petalElements.forEach((petal) => {
+                    gsap.killTweensOf(petal)
+                    initalizePetal(petal)
+                })
+            }, 150)
+        )
     }
 
     const InstaxPolaroids = () => {
         const positions = {
-            mobile: { "instax-1": 0.75, "instax-2": 0.5, "instax-3": 0.25 },
+            mobile: { "instax-1": 0.85, "instax-2": 0.5, "instax-3": 0.15 },
             desktop: { "instax-1": 0.85, "instax-2": 0.5, "instax-3": 0.15 },
         }
 
