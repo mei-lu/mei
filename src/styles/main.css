@@ -46,12 +46,25 @@
     --page-contain-xs: 50ch;
 }
 
+@keyframes body-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 body {
     background-color: var(--color-fairy-50);
     font-family: var(--font-text);
     color: var(--color-brown);
     min-height: 100vh;
     line-height: 1.5;
+
+    @media (prefers-reduced-motion: no-preference) {
+        animation: body-fade-in 0.9s ease 0.3s both;
+    }
 }
 
 .sr-only {
