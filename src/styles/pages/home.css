@@ -116,7 +116,7 @@
         }
     }
 
-    & #garden-intro {
+    & #blog-intro {
         display: flex;
         align-items: center;
         gap: var(--spacing-2xl);

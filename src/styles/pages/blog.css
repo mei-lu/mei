@@ -2,21 +2,21 @@
 @import "../layout.css";
 @import "../components/post-listing.css";
 
-#garden {
+#blog {
     & .search-container {
         margin-bottom: var(--spacing-lg);
     }
 
-    & #garden-categories {
+    & #blog-categories {
         display: flex;
         position: relative;
         top: 2px;
 
-        & .garden-category-tag {
+        & .blog-category-tag {
             border: 1px var(--color-brown) solid;
             padding: var(--spacing-xs);
 
-            & + .garden-category-tag {
+            & + .blog-category-tag {
                 margin-left: var(--spacing-xs);
             }
 
@@ -33,7 +33,7 @@
         }
     }
 
-    & #garden-search {
+    & #blog-search {
         padding: var(--spacing-sm);
         width: 100%;
         border: none;

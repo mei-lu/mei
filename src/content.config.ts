@@ -3,8 +3,8 @@ import { glob } from "astro/loaders"
 import { z } from "astro/zod"
 import { CATEGORIES } from "./scripts/_types"
 
-const garden = defineCollection({
-    loader: glob({ pattern: "*.md", base: "./src/content/garden" }),
+const blog = defineCollection({
+    loader: glob({ pattern: "*.md", base: "./src/content/blog" }),
     schema: z.object({
         title: z.string(),
         category: z.enum(CATEGORIES),
@@ -13,4 +13,4 @@ const garden = defineCollection({
     }),
 })
 
-export const collections = { garden }
+export const collections = { blog }

@@ -2,7 +2,7 @@
 import "../../styles/components/nav.css"
 import homeIcon from "../../assets/homeIcon.svg"
 import instaxIcon from "../../assets/portfolioIcon.svg"
-import gardenIcon from "../../assets/gardenIcon.svg"
+import blogIcon from "../../assets/blogIcon.svg"
 ---
 
 <nav>
@@ -12,10 +12,11 @@ import gardenIcon from "../../assets/gardenIcon.svg"
         </div>
 
         <div class="nav-item">
-            <a href="/garden"><img src={gardenIcon.src} /><span>Blog</span></a>
-        </div>
-        <div class="nav-item">
             <a href="/about"><img src={instaxIcon.src} /><span>About</span></a>
+        </div>
+
+        <div class="nav-item">
+            <a href="/blog"><img src={blogIcon.src} /><span>Blog</span></a>
         </div>
     </div>
 </nav>

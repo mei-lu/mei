@@ -3,7 +3,7 @@ import { mkdir, writeFile } from "node:fs/promises"
 import path from "node:path"
 
 export const updatePostsIndex = async () => {
-    const posts = await getCollection("garden")
+    const posts = await getCollection("blog")
 
     const data = posts
         .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())

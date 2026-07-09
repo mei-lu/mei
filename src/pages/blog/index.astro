@@ -1,8 +1,8 @@
 ---
-import "../../styles/pages/garden.css"
+import "../../styles/pages/blog.css"
 import Layout from "../..//templates/layouts/layout.astro"
 import { CATEGORIES } from "../../scripts/_types"
-import { updatePostsIndex } from "../../scripts/garden"
+import { updatePostsIndex } from "../../scripts/blog"
 await updatePostsIndex()
 ---
 
@@ -24,20 +24,20 @@ await updatePostsIndex()
 </template>
 
 <Layout title="mei's digital garden">
-    <div id="garden" class="lock">
+    <div id="blog" class="lock">
         <div class="search-container">
-            <input id="garden-search" type="search" placeholder="Search" />
+            <input id="blog-search" type="search" placeholder="Search" />
         </div>
 
-        <div id="garden-categories">
-            <div class="garden-category-tag" data-selected="true">
+        <div id="blog-categories">
+            <div class="blog-category-tag" data-selected="true">
                 <span>All</span>
             </div>
             {
                 CATEGORIES.map((category) => {
                     return (
                         <div
-                            class="garden-category-tag"
+                            class="blog-category-tag"
                             data-category={category}>
                             <span>{category}</span>
                         </div>
@@ -46,7 +46,7 @@ await updatePostsIndex()
             }
         </div>
 
-        <section id="garden-results"></section>
+        <section id="blog-results"></section>
     </div>
 </Layout>
 
@@ -56,14 +56,14 @@ await updatePostsIndex()
     import PostData from "../../content/posts.json"
     import { debounce } from "../../scripts/utilities"
 
-    const Garden = async () => {
+    const Blog = async () => {
         const categoryTags = document.querySelectorAll(
-            ".garden-category-tag"
+            ".blog-category-tag"
         ) as NodeListOf<HTMLElement>
         const searchInput = document.querySelector(
-            "#garden-search"
+            "#blog-search"
         ) as HTMLInputElement
-        const resultsContainer = document.querySelector("#garden-results")
+        const resultsContainer = document.querySelector("#blog-results")
 
         let searchTerm: string = ""
         let searchCategory: string | null = null
@@ -97,7 +97,7 @@ await updatePostsIndex()
                     const keyYear = keyDate.getFullYear()
                     const posts = postsByMonth[key]
                     const header = document.createElement("div")
-                    header.className = "garden-header"
+                    header.className = "blog-header"
                     header.textContent = MONTHS[monthIndex] + " " + keyYear
                     resultsContainer.appendChild(header)
 
@@ -123,7 +123,7 @@ await updatePostsIndex()
                         if (category) category.textContent = post.category
                         if (title) {
                             title.textContent = post.title
-                            title.setAttribute("href", `/garden/${slug}`)
+                            title.setAttribute("href", `/blog/${slug}`)
                         }
                         if (description)
                             description.textContent = post.description
@@ -218,7 +218,7 @@ await updatePostsIndex()
 
             categoryTag.addEventListener("click", () => {
                 const selectedCategoryTag = document.querySelector(
-                    `.garden-category-tag[${selectedAttribute}=true]`
+                    `.blog-category-tag[${selectedAttribute}=true]`
                 )
                 categoryTag.setAttribute(selectedAttribute, "true")
 
@@ -249,6 +249,6 @@ await updatePostsIndex()
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-        Garden()
+        Blog()
     })
 </script>

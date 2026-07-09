@@ -1,6 +1,6 @@
 @import "../main.css";
 
-.garden-header {
+.blog-header {
     background-color: var(--color-brown);
     color: var(--color-white);
     padding: var(--spacing-xs);
