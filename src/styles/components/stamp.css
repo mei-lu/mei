@@ -30,6 +30,12 @@
         height: 100%;
         width: 100%;
 
+        & .meta-text {
+            & a {
+                color: var(--color-white);
+            }
+        }
+
         & .tags {
             margin-top: var(--spacing-xs);
             & .tag-item {

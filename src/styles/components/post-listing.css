@@ -24,14 +24,14 @@
         padding: var(--spacing-sm);
         border-right: dotted 1px var(--color-brown);
         text-align: center;
+        font-family: var(--font-round);
 
         & .month {
-            font-weight: bold;
-            font-size: var(--font-min);
+            font-size: var(--font-xs);
         }
 
         & .year {
-            font-size: var(--font-min);
+            font-size: var(--font-xs);
         }
     }
 
@@ -43,15 +43,23 @@
 
         & .category {
             font-size: var(--font-xs);
-            font-weight: bold;
+            font-weight: 500;
+            font-family: var(--font-text);
         }
 
         & .post-title {
-            font-size: var(--font-sm);
+            font-size: var(--font-title);
+            font-weight: 550;
+            font-family: var(--font-round);
+
+            & a {
+                text-decoration: none;
+                color: var(--color-brown);
+            }
         }
 
         & .post-description {
-            font-size: var(--font-xs);
+            font-size: var(--font-sm);
         }
     }
 }

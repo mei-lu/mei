@@ -5,4 +5,4 @@ category: Life
 description: A finale to my year-long Japanese self study.
 ---
 
-COMING SOON.
+In high school, I had attended a friend's mom's Japanese lessons.

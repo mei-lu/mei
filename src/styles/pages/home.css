@@ -10,31 +10,40 @@
     }
 }
 
+#petal-layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1000;
+
+    @media (prefers-reduced-motion: reduce) {
+        display: none;
+    }
+
+    & .petal {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        will-change: transform, opacity;
+    }
+}
+
 #home {
     position: relative;
     overflow: hidden;
 
-    & a {
-        color: var(--color-brown);
-    }
-
     & section + section {
-        margin-top: var(--spacing-lg);
+        margin-top: var(--spacing-xl);
 
         @media (--breakpoint-md-min) {
-            margin-top: var(--spacing-lg);
+            margin-top: var(--spacing-2xl);
         }
     }
 
     & section:last-of-type {
         margin-bottom: var(--spacing-2xl);
-    }
-
-    .petal {
-        position: absolute;
-        opacity: 0;
-        pointer-events: none;
-        top: 0;
     }
 
     & .heading {
@@ -44,13 +53,25 @@
     }
 
     & #portfolio {
-        & .portfolio-layout {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
+        & .portfolio-grid {
+            columns: 1;
 
-            @media (max-width: 768px) {
-                grid-template-columns: repeat(2, 1fr);
+            @media (--breakpoint-md-min) {
+                columns: 2;
+                column-gap: var(--spacing-xl);
+            }
+
+            @media (--breakpoint-lg-min) {
+                columns: 3;
+            }
+
+            & .stamp {
+                break-inside: avoid;
+                margin-bottom: var(--spacing-lg);
+
+                @media (--breakpoint-md-min) {
+                    margin-bottom: var(--spacing-xl);
+                }
             }
         }
     }
@@ -66,8 +87,6 @@
         flex-direction: column;
         justify-content: center;
         text-align: center;
-        min-height: 40vh;
-        margin-top: var(--spacing-lg);
         position: relative;
 
         & #name {
@@ -188,9 +207,15 @@
                 background: var(--color-fairy);
                 height: 150px;
                 transform-origin: top center;
+                margin-top: 5px;
+
+                & a {
+                    color: var(--color-brown);
+                    text-decoration: none;
+                }
 
                 @media (--breakpoint-md-min) {
-                    height: 300px;
+                    height: 200px;
                 }
 
                 @media (prefers-reduced-motion: no-preference) {
@@ -211,7 +236,7 @@
                         object-fit: cover;
 
                         @media (--breakpoint-md-min) {
-                            height: 200px;
+                            height: 100px;
                         }
                     }
                 }

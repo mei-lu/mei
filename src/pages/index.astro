@@ -4,28 +4,81 @@ import GithubIcon from "../assets/github.svg"
 import EmailIcon from "../assets/email.svg"
 import LinkedinIcon from "../assets/linkedin.svg"
 import Layout from "../templates/layouts/layout.astro"
+import Stamp from "../templates/components/stamp.astro"
+import CatRoom from "../assets/projects/cat-room.mp4"
+import DesignSystem from "../assets/projects/design-system.webp"
+import ScribbleHero from "../assets/projects/scribblehero.mp4"
+import KirbyPortal from "../assets/projects/kirby_portal.mp4"
 ---
 
 <Layout title="mei">
+    <div id="petal-layer" aria-hidden="true"></div>
     <div id="home">
         <section id="hero" class="lock" data-size="min">
             <h1 class="bubble-letter" id="name">Mei Lu</h1>
 
             <div class="hero-container">
                 <p>
-                    I'm a creative developer interested in computer graphics, 3D
-                    art, and cute things! I am building interactive experiences
-                    in real time.
+                    Illustrator, Developer, 3D Artist
                     <br /><br />
-
-                    Currently working as a Full Stack Engineer and pursuing my
-                    M.S. in Artificial Intelligence from the University of
-                    Maryland, College Park
+                    I love creating joyful digital experiences ✿
                 </p>
             </div>
         </section>
 
-        <section id="contact" class="lock">
+        <section id="portfolio" class="lock">
+            <h2 class="sr-only">Portfolio</h2>
+            <div class="portfolio-grid">
+                <Stamp
+                    title="Kirby Dimensional Rift"
+                    tags={["Godot", "Blender"]}
+                    description="3D art + game made for Another Corner's video game art show. Put on Raspberry Pi with a camera module for gallery display."
+                    video={KirbyPortal}
+                    links={{
+                        // Demo: "/",
+                        // Blog: "/portfolio-site",
+                        // GitHub: "https://github.com/mei-lu/ScribbleHero",
+                    }}
+                />
+
+                <Stamp
+                    title="Cozy Cat Room"
+                    tags={["Web", "Three.js", "Blender"]}
+                    description="A cute Three.js room with interactive objects, optimized for the browser with baked lighting."
+                    video={CatRoom}
+                    links={{
+                        Demo: "https://3d-cat-room.meilu.dev/",
+                        Blog: "/garden/3d-room-blender-threejs",
+                        GitHub: "",
+                    }}
+                />
+
+                <Stamp
+                    title="Scribble Hero Snap Spectacles AR Game"
+                    tags={["AR", "Snap Spectacles"]}
+                    description="Players sketches are classified and used as tools to fight fires in AR. Won Honorable Mention for Game Prototyping at MIT Reality Hack 2026!"
+                    video={ScribbleHero}
+                    links={{
+                        // Demo: "/",
+                        // Blog: "/portfolio-site",
+                        GitHub: "https://github.com/mei-lu/ScribbleHero",
+                    }}
+                />
+
+                <Stamp
+                    title="University of Maryland Design System"
+                    tags={["JS Library", "Web Components"]}
+                    description="Created framework agnostic Web Components and maintained frontend monorepo for the UMD design system."
+                    image={DesignSystem.src}
+                    links={{
+                        Demo: "https://designsystem.umd.edu/components",
+                        GitHub: "https://github.com/UMD-Digital/design-system",
+                    }}
+                />
+            </div>
+        </section>
+
+        <section id="contact" class="lock" data-size="small">
             <div id="instax-slider">
                 <svg
                     viewBox="0 0 443 60"
@@ -116,74 +169,60 @@ import Layout from "../templates/layouts/layout.astro"
     gsap.registerPlugin(MotionPathPlugin)
 
     const SakuraPetals = () => {
-        const PETAL_COUNT = 25
+        const PETAL_COUNT = 15
 
         const sakuraPetals = [Sakura1, Sakura2, Sakura3, Sakura4]
         const petalListLength = sakuraPetals.length
         const petalElements: HTMLElement[] = []
-        let width = window.innerWidth
 
-        const createPetal = (petalIndex: number) => {
-            const petalSVG = sakuraPetals[petalIndex]
+        const petalLayer = document.querySelector<HTMLElement>("#petal-layer")
 
-            return petalSVG
-        }
-
-        const homeSection = document.querySelector<HTMLElement>("#home")
-
-        if (!width || !homeSection) return
+        if (!petalLayer) return
 
         for (let i = 0; i < PETAL_COUNT; i++) {
             const randomPetalIndex = Math.floor(Math.random() * petalListLength)
             const petalContainer = document.createElement("span")
             petalContainer.className = "petal"
-            petalContainer.ariaHidden = "true"
 
-            const petal = createPetal(randomPetalIndex)
-            petalContainer.innerHTML = petal
+            petalContainer.innerHTML = sakuraPetals[randomPetalIndex]
             petalElements.push(petalContainer)
         }
 
-        const initalizePetal = (petal: HTMLElement) => {
-            gsap.set(petal, {
-                scale: 0.2,
-                left: `random(-300, -200)`,
-                y: gsap.utils.random(-100, 100),
-                x: gsap.utils.random(0, 200),
-                rotate: gsap.utils.random(-50, 50),
-                opacity: 1,
-            })
-
-            gsap.to(petal, {
-                scale: gsap.utils.random(0.2, 0.4),
-                top: 300,
-                x: gsap.utils.random(width * 0.8, width),
-                ease: "power1.inOut",
-                duration: gsap.utils.random(5, 10),
-                repeat: -1,
-                opacity: 0,
-            })
+        const floatPetal = (petal: HTMLElement) => {
+            return gsap.fromTo(
+                petal,
+                {
+                    scale: 0.2,
+                    x: () => gsap.utils.random(-250, 0),
+                    y: () => gsap.utils.random(-300, 0),
+                    rotate: () => gsap.utils.random(-50, 50),
+                    opacity: 1,
+                },
+                {
+                    scale: () => gsap.utils.random(0.2, 0.4),
+                    x: () =>
+                        gsap.utils.random(
+                            window.innerWidth * 0.3,
+                            window.innerWidth * 0.9
+                        ),
+                    y: () => gsap.utils.random(200, 400),
+                    ease: "power1.inOut",
+                    duration: () => gsap.utils.random(5, 10),
+                    repeat: -1,
+                    repeatRefresh: true,
+                    opacity: 0,
+                }
+            )
         }
 
         const startShower = () => {
-            petalElements.forEach((petal, index) => {
-                homeSection.appendChild(petal)
-                gsap.delayedCall(index * 0.2, () => initalizePetal(petal))
+            petalElements.forEach((petal) => {
+                petalLayer.appendChild(petal)
+                floatPetal(petal).progress(Math.random())
             })
         }
 
         startShower()
-
-        window.addEventListener(
-            "resize",
-            debounce(() => {
-                width = window.innerWidth
-                petalElements.forEach((petal) => {
-                    gsap.killTweensOf(petal)
-                    initalizePetal(petal)
-                })
-            }, 150)
-        )
     }
 
     const InstaxPolaroids = () => {
@@ -232,9 +271,10 @@ import Layout from "../templates/layouts/layout.astro"
         "(prefers-reduced-motion: reduce)"
     ).matches
 
+    InstaxPolaroids()
+
     if (!prefersReducedMotion) {
         SakuraPetals()
         AnimateName()
     }
-    InstaxPolaroids()
 </script>

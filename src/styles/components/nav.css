@@ -10,6 +10,7 @@ nav {
         gap: var(--spacing-sm);
 
         & .nav-item {
+            font-family: var(--font-round);
             & a {
                 display: flex;
                 align-items: center;
@@ -19,10 +20,6 @@ nav {
                 & img {
                     width: 20px;
                     margin-right: var(--spacing-xs);
-                }
-
-                & span {
-                    font-weight: bold;
                 }
             }
 

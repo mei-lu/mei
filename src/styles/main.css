@@ -1,8 +1,6 @@
 @import "./reset.css";
 @import "./components/nav.css";
 @import "./components/footer.css";
-/* @import url("https://use.typekit.net/wzu6jqe.css"); */
-@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Lexend:wght@100..900&display=swap");
 
 @custom-media --breakpoint-sm-min (min-width: 480px);
 @custom-media --breakpoint-md-min (min-width: 768px);
@@ -20,9 +18,8 @@
     --color-pink: #ec889e;
 
     --font-fancy: "Cedarville Cursive", cursive;
-    --font-text: "museo-sans-rounded", sans-serif;
-    --font-lex: "Lexend", sans-serif;
-    /* --font-round: "ohno-softie-variable", sans-serif; */
+    --font-text: "Jost", sans-serif;
+    --font-round: "Fredoka", sans-serif;
     --spacing-min: 4px;
     --spacing-xs: 8px;
     --spacing-sm: 16px;
@@ -35,6 +32,7 @@
     --font-min: 12px;
     --font-xs: 14px;
     --font-sm: 16px;
+    --font-title: 18px;
     --font-md: 24px;
     --font-lg: 32px;
     --font-xl: 64px;
@@ -113,4 +111,8 @@ header {
     & a + a {
         margin-left: 4px;
     }
+}
+
+a {
+    color: var(--color-brown);
 }
