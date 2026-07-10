@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content"
+import { getCollection, render } from "astro:content"
 import Layout from "../../templates/layouts/layout.astro"
 import "../../styles/pages/post.css"
 
@@ -21,20 +21,22 @@ const title = post.data.title
 const description = post.data.description
 const body = post.body
 const date = new Date(post.data.date).toLocaleDateString()
+const { Content } = await render(post)
 ---
 
 <Layout title={title}>
     <div id="post" class="lock" data-size="small">
         <div class="return">
-            <a href="/blog" aria-label="Return to digital garden home">Back</a
+            <a href="/blog" aria-label="Return to digital garden home">← Back</a
             >
         </div>
+
         <div class="post-meta">
             <h1 class="post-title">{title}</h1>
-            <div class="post-date">Planted {date}</div>
+            <div class="post-date">Date: {date}</div>
             <p class="post-description">{description}</p>
         </div>
         <hr />
-        <div class="post-body">{body}</div>
+        <div class="post-body"><Content /></div>
     </div>
 </Layout>

@@ -1,12 +1,14 @@
 @import "../main.css";
-@import "../layout.css";
 
 #post {
     line-height: 18px;
     text-transform: none;
 
     & .return {
-        margin-bottom: var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
+        font-weight: bold;
+        font-family: var(--font-round);
+
         & a {
             color: var(--color-brown);
             text-decoration: none;
@@ -24,7 +26,7 @@
         }
 
         & .post-date {
-            font-size: var(--font-xs);
+            font-size: var(--font-sm);
         }
 
         & .post-description {
@@ -40,6 +42,27 @@
     }
 
     & .post-body {
-        font-size: var(--font-xs);
+        font-size: var(--font-sm);
+        line-height: 1.5rem;
+
+        & h1,
+        & h2,
+        & h3,
+        & h4,
+        & h5 {
+            margin-top: var(--spacing-md);
+            font-weight: 700;
+            color: var(--color-brown);
+        }
+
+        & ol,
+        ul {
+            list-style: inside;
+            line-height: 1rem;
+        }
+
+        & * + * {
+            margin-top: var(--spacing-sm);
+        }
     }
 }

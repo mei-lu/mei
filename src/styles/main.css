@@ -9,8 +9,6 @@
 :root {
     --color-fairy: #fffdfd;
     --color-fairy-50: #ffe9e7;
-    --color-rose: #b71c1c;
-    --color-rose: #b71c1c;
     --color-white: #ffffff;
     --color-black: #000000;
     --color-brown: #6d5050;
@@ -18,8 +16,8 @@
     --color-pink: #ec889e;
 
     --font-fancy: "Cedarville Cursive", cursive;
-    --font-text: "Jost", sans-serif;
-    --font-round: "Fredoka", sans-serif;
+    --font-text: "Poppins", sans-serif;
+    --font-round: "Manjari", sans-serif;
     --spacing-min: 4px;
     --spacing-xs: 8px;
     --spacing-sm: 16px;

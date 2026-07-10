@@ -1,14 +1,17 @@
 ---
 import "../styles/pages/home.css"
-import GithubIcon from "../assets/github.svg"
-import EmailIcon from "../assets/email.svg"
-import LinkedinIcon from "../assets/linkedin.svg"
+import GithubIcon from "../assets/deco/github.svg"
+import EmailIcon from "../assets/deco/email.svg"
+import LinkedinIcon from "../assets/deco/linkedin.svg"
 import Layout from "../templates/layouts/layout.astro"
 import Stamp from "../templates/components/stamp.astro"
 import CatRoom from "../assets/projects/cat-room.mp4"
 import DesignSystem from "../assets/projects/design-system.webp"
 import ScribbleHero from "../assets/projects/scribblehero.mp4"
 import KirbyPortal from "../assets/projects/kirby_portal.mp4"
+import WashiBlue from "../assets/deco/washi_blue.png"
+import WashiJean from "../assets/deco/washi_jean.png"
+import WashiPink from "../assets/deco/washi_pink.png"
 ---
 
 <Layout title="mei">
@@ -34,6 +37,7 @@ import KirbyPortal from "../assets/projects/kirby_portal.mp4"
                     tags={["Godot", "Blender"]}
                     description="3D art + game made for Another Corner's video game art show. Put on Raspberry Pi with a camera module for gallery display."
                     video={KirbyPortal}
+                    washi={WashiJean}
                     links={{
                         // Demo: "/",
                         // Blog: "/portfolio-site",
@@ -91,6 +95,11 @@ import KirbyPortal from "../assets/projects/kirby_portal.mp4"
                 </svg>
                 <div id="instax-1" class="instax-wrapper">
                     <div class="instax-card">
+                        <img
+                            class="washi"
+                            src={WashiJean.src}
+                            aria-hidden="true"
+                        />
                         <div class="instax-image">
                             <a
                                 href="https://www.linkedin.com/in/meil"
@@ -115,6 +124,11 @@ import KirbyPortal from "../assets/projects/kirby_portal.mp4"
                 </div>
                 <div id="instax-2" class="instax-wrapper">
                     <div class="instax-card">
+                        <img
+                            class="washi"
+                            src={WashiPink.src}
+                            aria-hidden="true"
+                        />
                         <div class="instax-image">
                             <a
                                 href="https://github.com/mei-lu"
@@ -136,6 +150,11 @@ import KirbyPortal from "../assets/projects/kirby_portal.mp4"
                 </div>
                 <div id="instax-3" class="instax-wrapper">
                     <div class="instax-card">
+                        <img
+                            class="washi"
+                            src={WashiBlue.src}
+                            aria-hidden="true"
+                        />
                         <div class="instax-image">
                             <a
                                 href="mailto:lumeidev@gmail.com"
@@ -159,10 +178,10 @@ import KirbyPortal from "../assets/projects/kirby_portal.mp4"
 <script>
     import gsap from "gsap"
     import { SplitText } from "gsap/all"
-    import Sakura1 from "../assets/sakura1.svg?raw"
-    import Sakura2 from "../assets/sakura2.svg?raw"
-    import Sakura3 from "../assets/sakura3.svg?raw"
-    import Sakura4 from "../assets/sakura4.svg?raw"
+    import Sakura1 from "../assets/deco/sakura1.svg?raw"
+    import Sakura2 from "../assets/deco/sakura2.svg?raw"
+    import Sakura3 from "../assets/deco/sakura3.svg?raw"
+    import Sakura4 from "../assets/deco/sakura4.svg?raw"
     import MotionPathPlugin from "gsap/MotionPathPlugin"
     import { debounce } from "../scripts/utilities"
 

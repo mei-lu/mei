@@ -1,0 +1,41 @@
+@import "../main.css";
+@import "../components/post-listing.css";
+
+#garden {
+    & .search-container {
+        margin-bottom: var(--spacing-lg);
+    }
+
+    & #garden-categories {
+        display: flex;
+        position: relative;
+        top: 2px;
+
+        & .garden-category-tag {
+            border: 1px var(--color-brown) solid;
+            padding: var(--spacing-xs);
+
+            & + .garden-category-tag {
+                margin-left: var(--spacing-xs);
+            }
+
+            &[data-selected="true"] {
+                background-color: var(--color-brown);
+                color: var(--color-white);
+            }
+
+            &:hover,
+            &:focus {
+                background-color: var(--color-brown-light);
+                color: var(--color-white);
+            }
+        }
+    }
+
+    & #garden-search {
+        padding: var(--spacing-sm);
+        width: 100%;
+        border: none;
+        border-radius: 50px;
+    }
+}

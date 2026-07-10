@@ -42,10 +42,6 @@
         }
     }
 
-    & section:last-of-type {
-        margin-bottom: var(--spacing-2xl);
-    }
-
     & .heading {
         font-family: var(--font-fancy);
         font-size: var(--font-xl);
@@ -191,7 +187,7 @@
             height: 200px;
 
             @media (--breakpoint-md-min) {
-                height: 400px;
+                height: 300px;
             }
 
             & svg {
@@ -200,53 +196,64 @@
 
             & .instax-wrapper {
                 position: absolute;
-            }
 
-            & .instax-card {
-                aspect-ratio: 2/3;
-                background: var(--color-fairy);
-                height: 150px;
-                transform-origin: top center;
-                margin-top: 5px;
-
-                & a {
-                    color: var(--color-brown);
-                    text-decoration: none;
-                }
-
-                @media (--breakpoint-md-min) {
-                    height: 200px;
-                }
-
-                @media (prefers-reduced-motion: no-preference) {
-                    animation: instax-sway 2.5s ease-in-out infinite;
-                }
-
-                & .instax-image {
-                    padding: var(--spacing-xs);
-                    padding-bottom: 0;
+                & .washi {
+                    position: absolute;
+                    width: 80px;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
 
                     @media (--breakpoint-md-min) {
-                        padding: var(--spacing-sm);
+                        width: 100px;
+                    }
+                }
+
+                & .instax-card {
+                    aspect-ratio: 2/3;
+                    background: var(--color-fairy);
+                    height: 150px;
+                    transform-origin: top center;
+                    margin-top: 5px;
+
+                    & a {
+                        color: var(--color-brown);
+                        text-decoration: none;
                     }
 
-                    & img {
-                        width: 100%;
-                        height: 100px;
-                        object-fit: cover;
+                    @media (--breakpoint-md-min) {
+                        height: 200px;
+                    }
+
+                    @media (prefers-reduced-motion: no-preference) {
+                        animation: instax-sway 2.5s ease-in-out infinite;
+                    }
+
+                    & .instax-image {
+                        padding: var(--spacing-xs);
+                        padding-bottom: 0;
 
                         @media (--breakpoint-md-min) {
+                            padding: var(--spacing-sm);
+                        }
+
+                        & img {
+                            width: 100%;
                             height: 100px;
+                            object-fit: cover;
+
+                            @media (--breakpoint-md-min) {
+                                height: 100px;
+                            }
                         }
                     }
-                }
 
-                & .instax-info {
-                    padding: var(--spacing-min);
-                    font-size: var(--font-min);
+                    & .instax-info {
+                        padding: var(--spacing-min);
+                        font-size: var(--font-min);
 
-                    @media (--breakpoint-md-min) {
-                        padding: var(--spacing-sm);
+                        @media (--breakpoint-md-min) {
+                            padding: var(--spacing-sm);
+                        }
                     }
                 }
             }
