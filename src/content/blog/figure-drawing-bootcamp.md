@@ -11,18 +11,24 @@ I think it's a tale as old as time, artists trying to learn anatomy better. Well
 
 ## Group Draw
 
-I signed up for a 60 day bootcamp, but the direct translation is actually "group draw". I literally get put inside a group chat with all the other students, and the teacher sends us a link to the live anatomy lecture. I have a timezone difference so I couldn't attend in real time, so I watched the recording.
+I signed up for a 60 day bootcamp, but the direct translation is actually "group draw". I literally get put inside a group chat with all the other students, and the teacher sends us a link to the live anatomy lecture. I have a timezone difference so I couldn't attend in real time, so I watched the recording. The lectures are usually 1.5 hours long.
 
-The concept is that everyday there are some theory being taught, followed by a reference figure drawing. The teacher would draw her version of it with pointers, and we were expected to do it as homework. If we wanted feedback, we had to post our work with the course name and day count as a hashtag. The teacher would then comment with her corrections. If the drawing had a common or interesting problem, she would bring it to class for live corrections.
+The concept is that everyday there are some anatomy theory being taught, followed by a reference figure drawing. The teacher would draw her version of it with pointers, and we were expected to do it as homework. If we wanted feedback, we had to post our work with the course name and day count as a hashtag. The teacher would then comment with her corrections. If the drawing had a common or interesting problem, she would bring it to class for live corrections.
 
 The teacher is very gen-z, in the sense that our classes are full of jokes even though we go over serious theory breakdowns of muscles and bone. In one instance she nicknamed the bone at the tip of the elbow as "eagle mouth" to get us to remember. If any students sent memes in the chat, she would make a doodle that relates to the knowledge she is teaching with the meme! I found that learning environment to be really refreshing. Even though the teacher is chill, everyone respects her because we are all interested in improving our art. It's a stark contrast to university courses where a mix of reasons exist for attending. I wish everyone can experience this environment where all students are there with a shared purpose. It really makes a difference in motivation when there is passion in the air.
 
+## Grind Culture
+
+There is a unique(ish) Chinese concept to check in and keep streaks. In the sense that there is a word for it in the collective consciousness 打卡. While it's nothing revolutionary, this almost feels like a culturally accepted way to get better at anything, and a nod to the importance of showing up. Almost like a default. To me the word manifests in my imagination as someone physically punching a hole in a punch card as an indicator that there was good work done for the day. I find that rarely can all of the students fail to miss a day in the drawing course, as it's quite an unforgiving pace to work. Yet, it holds the promise of guaranteeing improvement if you can see it through.
+
+I feel like grindy courses like this, while highly enjoyable, will only be taken by me 1-2 times per year to avoid burnout. It's quite reassuring that many students in the chat are trying to catch up on the content 3 months after the course has ended. Maybe due to their own circumstance or the brutal pace, but it is reassuring knowing that for most, not completing it perfectly is unavoidable.
+
 ## Improvement
 
-It's a no brainer that when you show up everyday to do something, you will get better at it. But I did notice that there needs to be an intention before pen is put onto paper. If I shut off my brain and just try to copy the reference, I didn't have many takeaways during the process. Sometimes those days are inevitable, as I was too busy or trying to catch up. (During this time, I was taking 3 graduate courses and working full time). Some intentions I would set are "balanced proportions", "expressive movement", and "simplifying shapes".
+It's a no brainer that when you show up everyday to do something, you will get better at it. But I did notice that there needs to be an intention before pen is put onto paper. If I shut off my brain and just try to copy the reference, I didn't have many takeaways during the process. Sometimes those days are inevitable, as I was too busy or trying to catch up. (During this time, I was taking 3 graduate courses and working full time). Some intentions I would set are "balanced proportions", "expressive movement", and "simplifying shapes". I always aim to put my brain to work during these study sessions.
 
 I think signing up for a course like this takes away friction of curating knowledge and finding reference photos. The practice material is just sent to you and there is no preparation needed to just draw. For someone with a busy life like me, it is totally worth the $30.
 
 ## Finding Similar Classes
 
-If you'd like to try this type of course, try searching "[something you want to learn] 团练" on RedNote and download WeChat. All classes are in Mandarin. But if you just want some frictionless drawing group with feedback, carrying a willingness to use Google translate (if applicable), it might be an interesting thing to try.
+If you'd like to try this type of course, try searching "[something you want to learn] 团练" on RedNote and download WeChat. All classes are in Mandarin. But if you just want some frictionless drawing group with feedback, carrying a willingness to use Google translate (if applicable), it might be an interesting thing to try!
