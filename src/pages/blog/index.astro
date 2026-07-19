@@ -23,7 +23,7 @@ await updatePostsIndex()
     </article>
 </template>
 
-<Layout title="mei's digital garden">
+<Layout title="Mei's Digital Diary">
     <div id="blog" class="lock">
         <div class="search-container">
             <input id="blog-search" type="search" placeholder="Search" />
@@ -36,9 +36,7 @@ await updatePostsIndex()
             {
                 CATEGORIES.map((category) => {
                     return (
-                        <div
-                            class="blog-category-tag"
-                            data-category={category}>
+                        <div class="blog-category-tag" data-category={category}>
                             <span>{category}</span>
                         </div>
                     )

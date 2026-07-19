@@ -16,14 +16,16 @@ const { title, tags, description, links, image, video } =
 
 <div class="stamp">
     <div class="stamp-image">
-        {image && <img src={image} />}
-        {
-            video && (
-                <video autoplay muted playsinline loop>
-                    <source src={video} type="video/mp4" />
-                </video>
-            )
-        }
+        <div class="media">
+            {image && <img src={image} />}
+            {
+                video && (
+                    <video autoplay muted playsinline loop>
+                        <source src={video} type="video/mp4" />
+                    </video>
+                )
+            }
+        </div>
 
         <div class="meta">
             <div class="meta-text">

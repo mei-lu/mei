@@ -3,14 +3,30 @@
 
     & .stamp-image {
         position: relative;
-        padding: var(--spacing-sm);
 
         background: var(--color-white);
+        transition: background-color 0.2s ease-in-out;
 
-        & > img,
-        video {
-            object-fit: cover;
-            width: 100%;
+        & .media {
+            position: relative;
+            padding: var(--spacing-sm);
+
+            & > img,
+            & > video {
+                display: block;
+                object-fit: cover;
+                width: 100%;
+            }
+
+            &::after {
+                content: "";
+                display: block;
+                background-color: var(--color-black);
+                position: absolute;
+                inset: var(--spacing-sm);
+                opacity: 0;
+                transition: opacity 0.2s ease-in-out;
+            }
         }
     }
 
@@ -49,6 +65,9 @@
 
         & .links {
             position: relative;
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-xs);
 
             & a {
                 color: var(--color-white);
@@ -79,15 +98,9 @@
 
     &:hover {
         & .stamp-image {
-            &::after {
-                content: "";
-                display: block;
-                background-color: var(--color-black);
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                left: 0;
-                top: 0;
+            background-color: var(--color-white);
+
+            & .media::after {
                 opacity: 0.5;
             }
         }

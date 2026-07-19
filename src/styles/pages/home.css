@@ -50,16 +50,7 @@
 
     & #portfolio {
         & .portfolio-grid {
-            columns: 1;
-
-            @media (--breakpoint-md-min) {
-                columns: 2;
-                column-gap: var(--spacing-xl);
-            }
-
-            @media (--breakpoint-lg-min) {
-                columns: 3;
-            }
+            columns: 2;
 
             & .stamp {
                 break-inside: avoid;
